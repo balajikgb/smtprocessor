@@ -1,0 +1,163 @@
+﻿@using ProcessorWebApp.Resources
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Http;
+@using Core.Services;
+@using System.Web;
+@using Core.Enums
+@{
+    var environment = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr] as string;
+}
+<style type="text/css">
+     iframe {
+    border: 1px solid black;
+    width: 100%;
+}
+    tr td:nth-child(8) {
+        text-align: center;
+    }
+
+    tr td:nth-child(9) {
+        text-align: center;
+    }
+    tr td:nth-child(10) {
+        text-align: center;
+    }
+</style>
+<h2 class="align-content-center text-center company-orders-title">@OrderResx.ProcessMonitorTitle</h2>
+<div class="d-flex flex-row overflow-auto" style="padding-left:10px;padding-right:10px">
+    <form id="__AjaxAntiForgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    <div class="flex-grow-1  oot-border content-width">
+        <table id="users-table" class="table table-sm table-bordered table-striped">
+            <thead class="table-header-row">
+                <tr class="text-center">
+                    <th style="width:80px"> @OrderResx.ProcessRequestId</th>
+                    <th> @OrderResx.ProcessName</th>
+                    <th> @OrderResx.ProcessGroupName</th>
+                    <th> @OrderResx.Status</th>
+                    <th> @OrderResx.UserName</th>
+                    <th> @OrderResx.ScheduleName</th>
+                    <th> @OrderResx.ServerName</th>
+                    <th> @OrderResx.RunDate</th>
+                    <th> @OrderResx.RunTime</th>
+                    <th> @OrderResx.Runby</th>
+                    <th> @OrderResx.Rundatetime</th>
+                </tr>
+                <tr id='ProcessFilter'>
+                    <th><input type="text" class="searchbox-half-input-thead" autocomplete="off" id="@OrderResx.ProcessRequestId"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ProcessName"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ProcessGroupName"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Status"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.UserName"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ScheduleName"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ServerName"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.RunDate"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.RunTime"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Runby"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Rundatetime"></th>
+                </tr>
+            </thead>
+            <tbody class="table-body-normal"></tbody>
+        </table>
+    </div>
+    <div>
+        <div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var userrole="";
+        var runcontroldata;
+        $(function () {
+            hideLoadingSpinner();
+            userrole = '@Context.Session.GetString("UserRole")';
+            $('#environments').val('@environment');
+            loadProcessRequestTable("/api/Processor/GetProcessRequestData");
+        });       
+        GetAntiForgeryToken = function () {
+                return $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+        };
+        function loadProcessRequestTable(e) {
+            var index = 0;
+            showLoadingSpinner();
+                $('#users-table').DataTable({
+                    language: {
+                        search: '<div class="pl-2"><small>@OrderResx.SearchText</small></div>',
+                        searchPlaceholder: "@OrderResx.TypeAnything",
+                        lengthMenu: "<div><small>@OrderResx.Showentries</small></div> _MENU_"
+                    },
+                    dom: "<'buttons-top'<'pull-left d-flex'<'mr-2'f><l>><'excel'B>>rt<'bottom'ip>",
+                    destroy: true,
+                    processing: true,
+                    ordering: false,
+                    paging: true,
+                   "fnInitComplete": function () {
+                    this.api().columns().every(function () {
+                        var that = this;
+                        $('input', this.header()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value,false,false).draw();
+                            }
+                        });
+                     });
+                   },
+                   buttons: [
+                   ],
+                   pagingType: "full_numbers",
+                   searching: true,
+                   lengthMenu: [
+                          [10, 25, 50, -1],
+                          [10, 25, 50, 'All'],
+                   ],
+                ajax: e ? e : "GetProcessRequestData",
+                   "columnDefs": [
+                        { "className": "UsersAdminFilter-dt-left", "targets": "_all" },
+                   ],
+                   columns: [
+                    { data: "processrequestid" },
+                    {
+                        data: "processid", render: function (data, type, row) {
+                            if(row.processid!=0) {
+                                return "<label>" + row.processname + "</label>";
+                            }
+                            else {
+                                return "<label></label>";
+                            }
+                        }
+                    },
+                    {
+                        data: "processgroupid", render: function (data, type, row) {
+                            if (row.processgroupid != 0) {
+                                return "<label>" + row.processgroupname + "</label>";
+                            }
+                            else {
+                                return "<label></label>";
+                            }
+                        }
+                    },
+                    { data: "status" },
+                    { data: "name" },
+                    { data: "schedulename" },
+                    { data: "servername" },
+                    { data: "rundate" },
+                    { data: "runtime" },
+                    { data: "createdby" },
+                    {
+                        data: "createddate", render: function (data, type, row) {
+                            if (row.createddate == "@OrderResx.datelabel") {
+                                return "";
+                            }
+                            else {
+                                return "<label id='lblCreatedDate' style='width:150px;'>" + row.createddate + "</label>";
+                            }
+                        }
+                    }                                
+                ]
+            });
+            hideLoadingSpinner();
+        }
+    </script>
+}

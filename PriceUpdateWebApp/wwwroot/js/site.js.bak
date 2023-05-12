@@ -1,0 +1,5 @@
+﻿$(function(){
+			$('#environments').on('change', function () {
+                window.location.href = $('#environments option:selected').data('url');
+            })
+});

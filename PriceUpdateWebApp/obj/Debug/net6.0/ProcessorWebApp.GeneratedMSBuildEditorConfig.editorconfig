@@ -1,0 +1,137 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProcessorWebApp
+build_property.RootNamespace = ProcessorWebApp
+build_property.ProjectDir = D:\Balaji\SMTProcessorClone\PriceUpdateWebApp\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Balaji\SMTProcessorClone\PriceUpdateWebApp
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Home/ErrorPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvclBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Home/UserNotAuthorized.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyTm90QXV0aG9yaXplZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Home/UserWithOutGrants.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyV2l0aE91dEdyYW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/CreateProcess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXENyZWF0ZVByb2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/CreateProcessGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXENyZWF0ZVByb2Nlc3NHcm91cC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/CreateProcessRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXENyZWF0ZVByb2Nlc3NSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/CreateRunControlPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXENyZWF0ZVJ1bkNvbnRyb2xQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/CreateServer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXENyZWF0ZVNlcnZlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/Process.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXFByb2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/ProcessGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXFByb2Nlc3NHcm91cC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/ProcessRequestMonitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXFByb2Nlc3NSZXF1ZXN0TW9uaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/RunControlPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXFJ1bkNvbnRyb2xQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Processor/Servers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvY2Vzc29yXFNlcnZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Shared/_CookieConsentPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db29raWVDb25zZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Shared/_HomeLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ib21lTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UserManagement/CreateLanguage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlck1hbmFnZW1lbnRcQ3JlYXRlTGFuZ3VhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UserManagement/CreateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlck1hbmFnZW1lbnRcQ3JlYXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UserManagement/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlck1hbmFnZW1lbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UserManagement/UsersAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlck1hbmFnZW1lbnRcVXNlcnNBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UserManagement/_EditPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlck1hbmFnZW1lbnRcX0VkaXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UsersRegistration/AccountIsBlocked.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNSZWdpc3RyYXRpb25cQWNjb3VudElzQmxvY2tlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UsersRegistration/RegistrationCompleted.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNSZWdpc3RyYXRpb25cUmVnaXN0cmF0aW9uQ29tcGxldGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/UsersRegistration/RegUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNSZWdpc3RyYXRpb25cUmVnVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Balaji/SMTProcessorClone/PriceUpdateWebApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

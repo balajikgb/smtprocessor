@@ -1,0 +1,32 @@
+﻿@{
+    if (Context.User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    }
+    ViewBag.Title = "Registration Complete";
+}
+<div class="text-center pt-5">
+    <h1 class="mb-5 oot-h1-text">REGISTRATION IS COMPLETE</h1>
+    <label class="oot-label-text oot-label-text-medium">A support team member will review your form soon.</label>
+    <br />
+    <br />
+    <label class="oot-label-text oot-label-text-medium">You will receive a confirmation letter with an invitation link to join the system.</label>
+    <br />
+    <br />
+    <label class="oot-label-text oot-label-text-medium"> You can close this page now.</label>
+</div>
+@section Scripts
+{
+    <script>
+    $(function () {
+        @if (Context.User.Identity.IsAuthenticated)
+            {
+                <text>hideLoadingSpinner();</text>
+            }
+        })
+    </script>
+}

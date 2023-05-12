@@ -1,0 +1,37 @@
+$(hideLoadingSpinner);
+
+        var data = [];
+        $('#submit-button').on('click', function () {
+            showLoadingSpinner();
+            $.ajax({
+                url: '',
+                type: "POST",
+                data: { 'UserCompanies': data}
+            }).then(function (data) {
+                $('#alert-container').html(data);
+                hideLoadingSpinner();
+            })
+        });
+        $('#reset-button').on('click', function () {
+            window.location.reload();
+        });
+        var config = {
+            '.chosen-select-width': { width: "75%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        $("#companies-dropdown").change(function () {
+            data = [];
+            $.each($("#companies-dropdown :selected"), function () {
+                var selectedCompanies = {
+                    CompanyId: "",
+                    CompanyName: "",
+                    CompanyBaan: ""
+                };
+                selectedCompanies.CompanyBaan = $(this).attr('data-baan');
+                selectedCompanies.CompanyId = $(this).attr('data-companyId');
+                selectedCompanies.CompanyName = $(this).attr('data-companyName');
+                data.push(selectedCompanies);
+            });
+        });

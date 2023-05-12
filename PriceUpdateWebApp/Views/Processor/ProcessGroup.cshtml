@@ -1,0 +1,207 @@
+﻿@using ProcessorWebApp.Resources
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Http;
+@using Core.Services;
+@using System.Web;
+@using Core.Enums
+@{
+    var environment = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr] as string;
+}
+<style type="text/css">
+     iframe {
+    border: 1px solid black;
+    width: 100%;
+}
+    tr td:nth-child(8) {
+        text-align: center;
+    }
+
+    tr td:nth-child(9) {
+        text-align: center;
+    }
+    tr td:nth-child(10) {
+        text-align: center;
+    }
+</style>
+<h2 class="align-content-center text-center company-orders-title">@OrderResx.ProcessGroupTitle</h2>
+<div class="d-flex flex-row overflow-auto" style="padding-left:10px;padding-right:10px">
+    <form id="__AjaxAntiForgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    <div class="flex-grow-1  oot-border content-width">
+        <table id="users-table" class="table table-sm table-bordered table-striped">
+            <thead class="table-header-row">
+                <tr class="text-center">
+                    <th style="width:80px"> @OrderResx.ProcessGroupID</th>
+                    <th> @OrderResx.Name</th>
+                    <th> @OrderResx.Description</th>
+                    <th> @OrderResx.Status</th>
+                    <th> @OrderResx.CreatedDateTitle</th>
+                    <th> @OrderResx.CreatedByTitle</th>
+                    <th style="width:80px"> @OrderResx.EditBatch</th>
+                    <th style="width:80px"> @OrderResx.DeleteBatch</th>
+                    <th style="width:80px">Run</th>
+                </tr>
+                <tr id='ProcessFilter'>
+                    <th><input type="text" class="searchbox-half-input-thead" autocomplete="off" id="@OrderResx.ProcessGroupID"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Name"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Description"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Status"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.CreatedDateTitle"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.CreatedByTitle"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-body-normal"></tbody>
+        </table>
+        @if (Context.Session.GetString("UserRole")==OrderResx.Admin)
+        {
+            <button onclick="location.href='/Processor/CreateProcessGroup/@environment'" title="Create Process Group" class='oot-button smallbtnicon' style="margin-left: 20px;"><i class="fa-sharp fa-solid fa-square-plus"></i></button>
+        }
+        else {
+            <button onclick="location.href='/Processor/CreateProcessGroup/@environment'" title="Create Process Group" class='oot-button smallbtnicon oot-button-gray' disabled='disabled' style="margin-left: 20px;"><i class="fa-sharp fa-solid fa-square-plus"></i></button>
+        }
+    </div>
+    <div>
+        <div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var userrole="";
+        $(function () {
+            hideLoadingSpinner();
+            userrole = '@Context.Session.GetString("UserRole")';
+            $('#environments').val('@environment');
+            loadProcessGroupTable("/api/Processor/GetProcessGroupData");
+        });       
+        GetAntiForgeryToken = function () {
+                return $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+        };
+        function loadProcessGroupTable(e) {
+            var index = 0;
+            showLoadingSpinner();
+                $('#users-table').DataTable({
+                    language: {
+                        search: '<div class="pl-2"><small>@OrderResx.SearchText</small></div>',
+                        searchPlaceholder: "@OrderResx.TypeAnything",
+                        lengthMenu: "<div><small>@OrderResx.Showentries</small></div> _MENU_"
+                    },
+                    dom: "<'buttons-top'<'pull-left d-flex'<'mr-2'f><l>><'excel'B>>rt<'bottom'ip>",
+                    destroy: true,
+                    processing: true,
+                    ordering: false,
+                    paging: true,
+                   "fnInitComplete": function () {
+                    this.api().columns().every(function () {
+                        var that = this;
+                        $('input', this.header()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value,false,false).draw();
+                            }
+                        });
+                     });
+                   },
+                   buttons: [
+                   ],
+                   pagingType: "full_numbers",
+                   searching: true,
+                   lengthMenu: [
+                          [10, 25, 50, -1],
+                          [10, 25, 50, 'All'],
+                   ],
+                   ajax: e ? e : "GetProcessGroupData",
+                   "columnDefs": [
+                        { "className": "UsersAdminFilter-dt-left", "targets": "_all" },
+                   ],
+                   columns: [
+                    { data: "processgroupid" },
+                    { data: "name" },
+                    { data: "description" },
+                    { data: "status" },
+                    {
+                        data: "createddate", render: function (data, type, row) {
+                            if (row.createddate == "@OrderResx.datelabel") {
+                                return "";
+                            }
+                            else {
+                                return "<label id='lblCreatedDate' style='width:150px;'>" + row.createddate + "</label>";
+                            }
+                        }
+                    },
+                    { data : "createdby"},                 
+                    {
+                        data: null, render: function (data, type, row) {
+                            if (userrole == "@OrderResx.Admin") {
+                                return '<button class="oot-button smallbtnicon" title="Edit Process Group" onclick="return EditProcessGroup_Click(' + row.processgroupid + ')"><i class="fa-solid fa-pen"></i></a>';
+                            }
+                            else {
+                                return '<button class="oot-button smallbtnicon oot-button-gray" title="Edit Process Group" style="background-color: #dcddde" onclick="return EditProcessGroup_Click(' + row.processgroupid + ')" disabled><i class="fa-solid fa-pen"></i></a>';
+                            }
+                        }
+                    },
+                    {
+                        data: null, render: function (data, type, row) {
+                            if (userrole == "@OrderResx.Admin") {
+                                return '<button class="oot-button smallbtnicon" title="Delete Process Group" onclick="return DeleteProcessGroup_Click(' + row.processgroupid + ',\'' + row.name + '\')"><i class="fa-solid fa-trash"></i></a>';
+                            }
+                            else {
+                                return '<button class="oot-button smallbtnicon oot-button-gray" title="Delete Process Group" style="background-color: #dcddde" onclick="return DeleteProcessGroup_Click(' + row.processgroupid + ',\'' + row.name + '\')" disabled><i class="fa-solid fa-trash"></i></a>';
+                            }
+                        }
+                    },
+                    {
+                        data: null, render: function (data, type, row) {
+                            return '<button class="oot-button smallbtnicon" title="Run Process Request" onclick="return RunProcessRequest_Click(' + row.processgroupid + ',\'' + row.name + '\')"><img src="/img/publish.ico" style="width:25px"/></a>';
+                        }
+                    }
+                ]
+            });
+            hideLoadingSpinner();
+        }
+        function EditProcessGroup_Click(Id) {
+            window.location.href = "/Processor/CreateProcessGroup?@OrderResx.Id=" + Id;
+        }
+        function DeleteProcessGroup_Click(Id,Name) {
+            var message = "@OrderResx.Areyousurewanttodeletethisprocessgroup" + " " + Name + "?";
+            toastr.success("<br /><button type='button' value='yes' id='confirmationButtonYes' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>Yes</button>&nbsp;&nbsp;<button type='button' value='no' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>No</button>", message, {
+                closeButton: false,
+                allowHtml: true,
+                onShown: function (toast) {
+                    $("#confirmationButtonYes").click(function () {
+                        toastr.clear();
+                        showLoadingSpinner();
+                        $.ajax({
+                            type: "GET",
+                            url: "/api/Processor/DeleteProcessGroup?Id=" + Id,
+                            contentType: "application/json;charset=utf-8",
+                            data: "{}",
+                            contentType: "json",
+                            async: true,
+                            success: function (response) {
+                                if (response == "@OrderResx.Success") {
+                                   loadProcessGroupTable("/api/Processor/GetProcessGroupData");
+                                   hideLoadingSpinner();
+                                }
+                                else {
+                                    toastr.clear();
+                                    hideLoadingSpinner();
+                                    toastr.warning("@OrderResx.Somethingwentwrong", "");
+                                    return false;
+                                }
+                            }
+                        });
+                        return false;
+                    });
+                }
+            });
+        }
+        function RunProcessRequest_Click(Id, Name) {
+            window.location = "/Processor/CreateProcessRequest?ProcessGroupId=" + Id + "&Name=" + Name;
+        }
+    </script>
+}

@@ -1,0 +1,43 @@
+﻿@model Core.Services.UserModel
+@using ProcessorWebApp.Resources;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<hr />
+<div class="row" style="width:100%">
+    <img class="home-img" />
+    <div class="col-md-4">
+        <div class="welcome-text">
+           @OrderResx.HomeWelcomeText
+        </div>
+        <div class="subwelcome-text text-dark">
+            @OrderResx.HomeSubWelcomeText
+        </div>
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control- label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+                <a class="text-dark ml-1" asp-controller="Home" asp-action="AzureADAuth">@OrderResx.HomeSignActiveDirectory</a>
+            </div>
+        </form>
+        <div class="text-center">
+            <a class="default-link-style" href="/UsersRegistration/RegUser">New User Registration</a>
+        </div>
+    </div>
+    
+</div>
+
+@*@section Scripts {@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}*@

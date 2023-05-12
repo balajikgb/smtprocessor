@@ -1,0 +1,2305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlertModalApply" xml:space="preserve">
+    <value>Apply Changes</value>
+  </data>
+  <data name="AlertModalCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Alerts" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="Appliedby" xml:space="preserve">
+    <value>Appliedby</value>
+  </data>
+  <data name="Applieddatetime" xml:space="preserve">
+    <value>Applieddatetime</value>
+  </data>
+  <data name="BacktoCompaniesList" xml:space="preserve">
+    <value>&lt;&lt; Back to Companies List</value>
+  </data>
+  <data name="BackToOrderList" xml:space="preserve">
+    <value>&lt;&lt; Back to Order List</value>
+  </data>
+  <data name="Batch" xml:space="preserve">
+    <value>Price Update Batch</value>
+  </data>
+  <data name="BatchId" xml:space="preserve">
+    <value>Batch Id</value>
+  </data>
+  <data name="BatchName" xml:space="preserve">
+    <value>Batch Name</value>
+  </data>
+  <data name="BatchProcess" xml:space="preserve">
+    <value>Hotfix Quick Deployment</value>
+  </data>
+  <data name="Careers" xml:space="preserve">
+    <value>Careers</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="CompaniesAcctNo" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="CompaniesBaanCo." xml:space="preserve">
+    <value>ERP Company</value>
+  </data>
+  <data name="CompaniesCity" xml:space="preserve">
+    <value>CITY</value>
+  </data>
+  <data name="CompaniesCompanies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="CompaniesCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="CompaniesOpenOrders" xml:space="preserve">
+    <value>Open Orders</value>
+  </data>
+  <data name="CompaniesTelephone" xml:space="preserve">
+    <value>TELEPHONE</value>
+  </data>
+  <data name="CompaniesTitle" xml:space="preserve">
+    <value>COMPANIES</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>© 2022 Armstrong Fluid Technology</value>
+  </data>
+  <data name="Createdby" xml:space="preserve">
+    <value>Createdby</value>
+  </data>
+  <data name="Createddatetime" xml:space="preserve">
+    <value>Createddatetime</value>
+  </data>
+  <data name="CreateEnvironment" xml:space="preserve">
+    <value>Create Environment</value>
+  </data>
+  <data name="CurrentListPrice" xml:space="preserve">
+    <value>CurrentListPrice</value>
+  </data>
+  <data name="CurrentStage" xml:space="preserve">
+    <value>CurrentStage</value>
+  </data>
+  <data name="DbName" xml:space="preserve">
+    <value>Data Source</value>
+  </data>
+  <data name="DeleteBatch" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DocumentAlertsCompanyName" xml:space="preserve">
+    <value>Company Name:</value>
+  </data>
+  <data name="DocumentAlertsEarnNotifications" xml:space="preserve">
+    <value>Document Notification</value>
+  </data>
+  <data name="DocumentAlertsEmailAddress" xml:space="preserve">
+    <value>Your Email Address</value>
+  </data>
+  <data name="DocumentAlertsOrderNo" xml:space="preserve">
+    <value>Order No:</value>
+  </data>
+  <data name="DocumentAlertsTitle" xml:space="preserve">
+    <value>Document Alert</value>
+  </data>
+  <data name="DocumentAlertsType:" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="DocumentAlertsUpdate" xml:space="preserve">
+    <value>Apply Changes</value>
+  </data>
+  <data name="DocumentAlertsUserName" xml:space="preserve">
+    <value>User Name:</value>
+  </data>
+  <data name="DocumentPageBillOfLadings" xml:space="preserve">
+    <value>Bill of Ladings</value>
+  </data>
+  <data name="DocumentPageCreated" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DocumentPageFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="DocumentPageInvoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="DocumentPageOrderAcknowledgement" xml:space="preserve">
+    <value>Order Acknowledgement</value>
+  </data>
+  <data name="DocumentPageOthers" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="DocumentPageTitle" xml:space="preserve">
+    <value>Sales Order Documents</value>
+  </data>
+  <data name="DocumentPageType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="AppliedEnvironments" xml:space="preserve">
+    <value>Hotfixed</value>
+  </data>
+  <data name="DocumentPageViewed" xml:space="preserve">
+    <value>Viewed</value>
+  </data>
+  <data name="EditBatch" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditEnvironment" xml:space="preserve">
+    <value>Edit Environment</value>
+  </data>
+  <data name="EffectiveDate" xml:space="preserve">
+    <value>EffectiveDate</value>
+  </data>
+  <data name="EnglishAgreement1" xml:space="preserve">
+    <value>This site is intended for information purposes only and is not to be distributed or shared outside of the company for any alternative purposes. All content falls under our confidentiality, non-disclosure, and propriety information policies, as found and signed off in your employment agreement.</value>
+  </data>
+  <data name="EnglishAgreement2" xml:space="preserve">
+    <value>I consent that failure to comply will be subject to disciplinary action up to and including dismissal.</value>
+  </data>
+  <data name="Environment" xml:space="preserve">
+    <value>Connected Environments</value>
+  </data>
+  <data name="EnvironmentId" xml:space="preserve">
+    <value>Environment Id</value>
+  </data>
+  <data name="EnvironmentName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ErrorHeaderText" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>We are working on getting this fixed as soon as we can. Please, try again later</value>
+  </data>
+  <data name="Expirydatetime" xml:space="preserve">
+    <value>Expirydatetime</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="HeaderCarrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="HeaderCurrency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="HeaderCustomer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="HeaderDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="HeaderDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="HeaderOrderDate" xml:space="preserve">
+    <value>Order date</value>
+  </data>
+  <data name="HeaderPosition" xml:space="preserve">
+    <value>Pos</value>
+  </data>
+  <data name="HeaderPositionNumberFilter" xml:space="preserve">
+    <value>Position Number Filter</value>
+  </data>
+  <data name="HeaderProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="HeaderPurchaseOrder" xml:space="preserve">
+    <value>Purchase Order</value>
+  </data>
+  <data name="HeaderQuantityShippedTotal" xml:space="preserve">
+    <value>Qty Shipped / Total</value>
+  </data>
+  <data name="HeaderShippedTotalLines" xml:space="preserve">
+    <value>Shipped / Total lines</value>
+  </data>
+  <data name="HeaderTagCode" xml:space="preserve">
+    <value>Tag code</value>
+  </data>
+  <data name="HeaderTrackingNumber" xml:space="preserve">
+    <value>Tracking #</value>
+  </data>
+  <data name="HindiAgreement1" xml:space="preserve">
+    <value>यह साइट केवल सूचना उद्देश्यों के लिए है और किसी भी वैकल्पिक उद्देश्यों के लिए कंपनी के बाहर वितरित या साझा नहीं की जानी है। सभी सामग्री हमारी गोपनीयता, गैर-प्रकटीकरण और औचित्य सूचना नीतियों के अंतर्गत आती है, जैसा कि आपके रोजगार अनुबंध में पाया और हस्ताक्षरित किया गया है।</value>
+  </data>
+  <data name="HindiAgreement2" xml:space="preserve">
+    <value>मैं सहमत हूं कि अनुपालन करने में विफलता बर्खास्तगी सहित अनुशासनात्मक कार्रवाई के अधीन होगी।</value>
+  </data>
+  <data name="HomeOrderTracker" xml:space="preserve">
+    <value>Online Order Tracker</value>
+  </data>
+  <data name="HomeSignActiveDirectory" xml:space="preserve">
+    <value>Sign in using Active Directory</value>
+  </data>
+  <data name="HomeSubWelcomeText" xml:space="preserve">
+    <value>Online Order Tracker allows our customers to view pending and delivered orders status, corresponding documentation, and track potential shipment delays</value>
+  </data>
+  <data name="HomeWelcomeText" xml:space="preserve">
+    <value>Welcome to Armstrong Online Order Tracker</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <data name="InputCompanyNameOrIDPlaceholder" xml:space="preserve">
+    <value>Input name or ID</value>
+  </data>
+  <data name="IsActiveUser" xml:space="preserve">
+    <value>Is Active User?</value>
+  </data>
+  <data name="ItemsCarrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="ItemsComplete" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ItemsDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ItemsItemCode" xml:space="preserve">
+    <value>Item Code</value>
+  </data>
+  <data name="ItemsLastShippedDate" xml:space="preserve">
+    <value>Last Shipped Date</value>
+  </data>
+  <data name="ItemsLineItem" xml:space="preserve">
+    <value>Line Item</value>
+  </data>
+  <data name="ItemsOrdered" xml:space="preserve">
+    <value>Q-ty Ordered</value>
+  </data>
+  <data name="ItemsOrig Planned Date" xml:space="preserve">
+    <value>Original Planned Date</value>
+  </data>
+  <data name="ItemsQuantity" xml:space="preserve">
+    <value>QUANTITY</value>
+  </data>
+  <data name="ItemsRefreshData" xml:space="preserve">
+    <value>Refresh Data</value>
+  </data>
+  <data name="ItemsRevisedPlannedShipDate" xml:space="preserve">
+    <value>REVISED PLANNED SHIP DATE</value>
+  </data>
+  <data name="ItemsShipped" xml:space="preserve">
+    <value>Q-ty Shipped</value>
+  </data>
+  <data name="ItemsShowPrice" xml:space="preserve">
+    <value>Show Price</value>
+  </data>
+  <data name="ItemsTagCode" xml:space="preserve">
+    <value>Tag Code</value>
+  </data>
+  <data name="ItemsTitle" xml:space="preserve">
+    <value>Sales Order Items</value>
+  </data>
+  <data name="ItemsTotalPrice" xml:space="preserve">
+    <value>Total Price</value>
+  </data>
+  <data name="ItemsTrackingNumber" xml:space="preserve">
+    <value>Tracking number</value>
+  </data>
+  <data name="KannadaAgreement1" xml:space="preserve">
+    <value>ಈ ಸೈಟ್ ಮಾಹಿತಿ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಮಾತ್ರ ಉದ್ದೇಶಿಸಲಾಗಿದೆ ಮತ್ತು ಯಾವುದೇ ಪರ್ಯಾಯ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಕಂಪನಿಯ ಹೊರಗೆ ವಿತರಿಸಲು ಅಥವಾ ಹಂಚಿಕೊಳ್ಳಲು ಇಲ್ಲ. ಎಲ್ಲಾ ವಿಷಯಗಳು ನಮ್ಮ ಗೌಪ್ಯತೆ, ಬಹಿರಂಗಪಡಿಸದಿರುವಿಕೆ ಮತ್ತು ಆದ್ಯತೆಯ ಮಾಹಿತಿ ನೀತಿಗಳ ಅಡಿಯಲ್ಲಿ ಬರುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಉದ್ಯೋಗ ಒಪ್ಪಂದದಲ್ಲಿ ಸಹಿ ಮಾಡಲಾಗಿದೆ.</value>
+  </data>
+  <data name="KannadaAgreement2" xml:space="preserve">
+    <value>ಅನುಸರಿಸಲು ವಿಫಲವಾದರೆ ವಜಾಗೊಳಿಸುವಿಕೆ ಸೇರಿದಂತೆ ಶಿಸ್ತಿನ ಕ್ರಮಕ್ಕೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ ಎಂದು ನಾನು ಒಪ್ಪುತ್ತೇನೆ.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Lastupdatedatetime" xml:space="preserve">
+    <value>Lastupdatedatetime</value>
+  </data>
+  <data name="Lastupdatedby" xml:space="preserve">
+    <value>Lastupdatedby</value>
+  </data>
+  <data name="LayoutAdmin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="LayoutArmstrongLogo" xml:space="preserve">
+    <value>Armstrong</value>
+  </data>
+  <data name="LayoutCarriersAdmin" xml:space="preserve">
+    <value>Carriers Admin</value>
+  </data>
+  <data name="LayoutCompaniesAdmin" xml:space="preserve">
+    <value>Companies Admin</value>
+  </data>
+  <data name="LayoutCompanySearch" xml:space="preserve">
+    <value>Company Search</value>
+  </data>
+  <data name="LayoutDocumentsAlertSettings" xml:space="preserve">
+    <value>Document Alert Setting</value>
+  </data>
+  <data name="LayoutHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="LayoutLogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="LayoutShippingAlertSettings" xml:space="preserve">
+    <value>Shippings Alert Setting </value>
+  </data>
+  <data name="LayoutShippingMatrix" xml:space="preserve">
+    <value>Shipping Matrix</value>
+  </data>
+  <data name="LayoutUserProfile" xml:space="preserve">
+    <value>User Profile</value>
+  </data>
+  <data name="LayoutUsersAdmin" xml:space="preserve">
+    <value>Users Admin</value>
+  </data>
+  <data name="LayoutVievAds" xml:space="preserve">
+    <value>View Ads</value>
+  </data>
+  <data name="LayoutVievLogs" xml:space="preserve">
+    <value>View Logs</value>
+  </data>
+  <data name="Legend" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="Long_Description" xml:space="preserve">
+    <value>Long Description</value>
+  </data>
+  <data name="MakeChanges" xml:space="preserve">
+    <value>Make Changes</value>
+  </data>
+  <data name="Matrix" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="MatrixView" xml:space="preserve">
+    <value>Matrix Details</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MyOrderTitle" xml:space="preserve">
+    <value>My Order #{0}</value>
+  </data>
+  <data name="NewListPrice" xml:space="preserve">
+    <value>NewListPrice</value>
+  </data>
+  <data name="NewPrice" xml:space="preserve">
+    <value>NewPrice</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OldPrice" xml:space="preserve">
+    <value>Old Price</value>
+  </data>
+  <data name="OrdersCustomerName" xml:space="preserve">
+    <value>CUSTOMER NAME</value>
+  </data>
+  <data name="OrdersDocument" xml:space="preserve">
+    <value>DOCUMENT</value>
+  </data>
+  <data name="OrderSearchCompany" xml:space="preserve">
+    <value>Search Company</value>
+  </data>
+  <data name="OrdersMyOrders" xml:space="preserve">
+    <value>Company Orders</value>
+  </data>
+  <data name="OrdersProjectName" xml:space="preserve">
+    <value>PROJECT NAME</value>
+  </data>
+  <data name="OrdersPurchaseOrder" xml:space="preserve">
+    <value>PURCHASE ORDER</value>
+  </data>
+  <data name="OrdersRefreshData" xml:space="preserve">
+    <value>Refresh Data</value>
+  </data>
+  <data name="OrdersSalesOrder" xml:space="preserve">
+    <value>SALES ORDER</value>
+  </data>
+  <data name="OrdersShipped" xml:space="preserve">
+    <value>SHIPPED</value>
+  </data>
+  <data name="OrdersShipRange" xml:space="preserve">
+    <value>SHIP RANGE</value>
+  </data>
+  <data name="OrdersTitle" xml:space="preserve">
+    <value>COMPANY ORDERS</value>
+  </data>
+  <data name="OrdersTotal" xml:space="preserve">
+    <value>TOTAL</value>
+  </data>
+  <data name="OrderTrackerAll" xml:space="preserve">
+    <value>*All*</value>
+  </data>
+  <data name="OrderTrackerByNameOrId" xml:space="preserve">
+    <value>Company name or ID</value>
+  </data>
+  <data name="OrderTrackerByOrderNumber" xml:space="preserve">
+    <value>By order number</value>
+  </data>
+  <data name="OrderTrackerCo-Id" xml:space="preserve">
+    <value>ERP Company</value>
+  </data>
+  <data name="OrderTrackerCompanyNameOrIdSearch" xml:space="preserve">
+    <value>Co Name or ID#</value>
+  </data>
+  <data name="OrderTrackerCustomer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="OrderTrackerOpenOrdersOnly" xml:space="preserve">
+    <value>Open Orders Only</value>
+  </data>
+  <data name="OrderTrackerOrderNum" xml:space="preserve">
+    <value>Order Number</value>
+  </data>
+  <data name="OrderTrackerRep" xml:space="preserve">
+    <value>Rep/Agent</value>
+  </data>
+  <data name="OrderTrackerReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="OrderTrackerSearch" xml:space="preserve">
+    <value>Get Results</value>
+  </data>
+  <data name="OrderTrackerSearchMethod" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="OrderTrackerSearchOrder" xml:space="preserve">
+    <value>Search Order</value>
+  </data>
+  <data name="OrderTrackerTypeId" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Partners" xml:space="preserve">
+    <value>Partners</value>
+  </data>
+  <data name="PartNumber" xml:space="preserve">
+    <value>Part Number</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PortugueseAgreement1" xml:space="preserve">
+    <value>Este site destina-se apenas a fins informativos e não deve ser distribuído ou compartilhado fora da empresa para outros fins. Todo o conteúdo está sob nossas políticas de confidencialidade, não divulgação e propriedade de informações, conforme firmado em seu contrato de trabalho.</value>
+  </data>
+  <data name="PortugueseAgreement2" xml:space="preserve">
+    <value>Eu concordo que o descumprimento estará sujeito a ação disciplinar podendo incluir demissão.</value>
+  </data>
+  <data name="PositionNumberFilterAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="ProcessId" xml:space="preserve">
+    <value>ProcessId</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
+  <data name="PumpManager" xml:space="preserve">
+    <value>Pump Manager</value>
+  </data>
+  <data name="QuickApply" xml:space="preserve">
+    <value>Quick Apply</value>
+  </data>
+  <data name="RecentSalesOrdersSelectLabel" xml:space="preserve">
+    <value>Recent Sales Orders</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Change Report Summary</value>
+  </data>
+  <data name="ReportBug" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
+  <data name="Retrievedby" xml:space="preserve">
+    <value>Retrievedby</value>
+  </data>
+  <data name="Revision" xml:space="preserve">
+    <value>Revision</value>
+  </data>
+  <data name="RomanianAgreement1" xml:space="preserve">
+    <value>Acesta platforma este destinata doar în scop informativ și nu trebuie să fie distribuita sau partajata în afara companiei sau in nici un alt scop. Întregul conținut se încadrează în politicile noastre de confidențialitate, nedivulgabile și politicile noastre legate de proprietatea informatiilor , așa cum sunt găsite și semnate în contractul dvs. de angajare.</value>
+  </data>
+  <data name="RomanianAgreement2" xml:space="preserve">
+    <value>Sunt de acord că nerespectarea va fi supusă unor măsuri disciplinare până la/și inclusiv concediere.</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="Runby" xml:space="preserve">
+    <value>Runby</value>
+  </data>
+  <data name="Rundatetime" xml:space="preserve">
+    <value>Rundatetime</value>
+  </data>
+  <data name="SalesOrderItem" xml:space="preserve">
+    <value>Sales Order Item</value>
+  </data>
+  <data name="SearchPageTitle" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Search in the table</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>SelectAll</value>
+  </data>
+  <data name="SelectCompanies" xml:space="preserve">
+    <value>Select companies to show alerts</value>
+  </data>
+  <data name="SelectObject" xml:space="preserve">
+    <value>Select Object</value>
+  </data>
+  <data name="Server" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="ShippingAlertsCompanyName" xml:space="preserve">
+    <value>Company Name:</value>
+  </data>
+  <data name="ShippingAlertsDelay" xml:space="preserve">
+    <value>Alerts when shipping delay:</value>
+  </data>
+  <data name="ShippingAlertsEarnNotifications" xml:space="preserve">
+    <value>Shipment Notification</value>
+  </data>
+  <data name="ShippingAlertsEmailAddress" xml:space="preserve">
+    <value>Your Email Address</value>
+  </data>
+  <data name="ShippingAlertsOrderNo" xml:space="preserve">
+    <value>Order Number</value>
+  </data>
+  <data name="ShippingAlertsTitle" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="ShippingAlertsType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ShippingAlertsUserName" xml:space="preserve">
+    <value>User Name:</value>
+  </data>
+  <data name="ShippingConstraint" xml:space="preserve">
+    <value>Shipping Constraint</value>
+  </data>
+  <data name="ShowAlerts" xml:space="preserve">
+    <value>Select companies to show alerts</value>
+  </data>
+  <data name="Simplified_ChineseAgreement1" xml:space="preserve">
+    <value>此站点仅用于信息发布，不得用于对外传播或转载等其他用途。
+所有内容均受员工入职时所签署的保密协议及相关专属信息协议的约束。</value>
+  </data>
+  <data name="Simplified_ChineseAgreement2" xml:space="preserve">
+    <value>本人同意若有违反将受到包括解雇在内的相关纪律处分。</value>
+  </data>
+  <data name="Sitemap" xml:space="preserve">
+    <value>Sitemap</value>
+  </data>
+  <data name="SiteSalesOffice" xml:space="preserve">
+    <value>Site/Sales Office</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Terms&amp;Conditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="TypeAnything" xml:space="preserve">
+    <value>Type anything</value>
+  </data>
+  <data name="UserAdminCompanies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="UserAdminCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="UserAdminCompanyId" xml:space="preserve">
+    <value>CompanyId</value>
+  </data>
+  <data name="UserAdminEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UserAdminErpCompanyNumber" xml:space="preserve">
+    <value>ERP Company/Site ID</value>
+  </data>
+  <data name="UserAdminErpCompanyNumbers" xml:space="preserve">
+    <value>ERP Companies/Sites</value>
+  </data>
+  <data name="UserAdminFirstName" xml:space="preserve">
+    <value>FirstName</value>
+  </data>
+  <data name="UserAdminHasFullAccess" xml:space="preserve">
+    <value>HasFullAccess?</value>
+  </data>
+  <data name="UserAdminLastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="UserAdminRole" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UsersAdminDeleteUser" xml:space="preserve">
+    <value>Delete User</value>
+  </data>
+  <data name="UsersAdminNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="UsersAdminTitle" xml:space="preserve">
+    <value>Users Admin</value>
+  </data>
+  <data name="UsersAdminYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="UsersView" xml:space="preserve">
+    <value>Change Report Summary</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Xmldata" xml:space="preserve">
+    <value>XmlData</value>
+  </data>
+  <data name="BatchProcessView" xml:space="preserve">
+    <value>Batch Process View</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="EnvName" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="Deny" xml:space="preserve">
+    <value>Deny</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="ReviewInProgress" xml:space="preserve">
+    <value>Review-In-Progress</value>
+  </data>
+  <data name="SubmittoReview" xml:space="preserve">
+    <value>Submit to Review</value>
+  </data>
+  <data name="BatchHistory" xml:space="preserve">
+    <value>Batch History</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+  <data name="TransactionBy" xml:space="preserve">
+    <value>Transaction By</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="BulkAmountChange" xml:space="preserve">
+    <value>Bulk Amount Change</value>
+  </data>
+  <data name="EffDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="Fields" xml:space="preserve">
+    <value>Fields:</value>
+  </data>
+  <data name="GetResults" xml:space="preserve">
+    <value>Get Results</value>
+  </data>
+  <data name="Identifiers" xml:space="preserve">
+    <value>Identifier:</value>
+  </data>
+  <data name="MarketFilter" xml:space="preserve">
+    <value>Market Filter:</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No data available in table</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options:</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage(x.xx%)</value>
+  </data>
+  <data name="PercentChange" xml:space="preserve">
+    <value>Percent Change</value>
+  </data>
+  <data name="RetrieveBy" xml:space="preserve">
+    <value>Retrieve By:</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>Round to nearest dollar</value>
+  </data>
+  <data name="RoundOff" xml:space="preserve">
+    <value>Round Off</value>
+  </data>
+  <data name="SpecificMatrix" xml:space="preserve">
+    <value>Specific Matrix:</value>
+  </data>
+  <data name="Batches" xml:space="preserve">
+    <value>Batch:</value>
+  </data>
+  <data name="BatchNames" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="EffDates" xml:space="preserve">
+    <value>Effective Date:</value>
+  </data>
+  <data name="Environments" xml:space="preserve">
+    <value>Environment:</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Fields:</value>
+  </data>
+  <data name="LastUpdatedBys" xml:space="preserve">
+    <value>Last Updated By</value>
+  </data>
+  <data name="Matrices" xml:space="preserve">
+    <value>Matrix:</value>
+  </data>
+  <data name="MatrixName" xml:space="preserve">
+    <value>Matrix Name</value>
+  </data>
+  <data name="NewPrices" xml:space="preserve">
+    <value>New Price</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="PriceChanges" xml:space="preserve">
+    <value>Price Changes</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product:</value>
+  </data>
+  <data name="Showentries" xml:space="preserve">
+    <value>Show entries</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Access</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AlreadyExisting" xml:space="preserve">
+    <value>Already Existing</value>
+  </data>
+  <data name="AlreadyExistingEnvironmentName" xml:space="preserve">
+    <value>Already Existing Environment Name</value>
+  </data>
+  <data name="AlreadyOneBatchProcessAvailable" xml:space="preserve">
+    <value>Already One This Batch Available in Batch Process</value>
+  </data>
+  <data name="AlreadyScheduled" xml:space="preserve">
+    <value>Already Scheduled</value>
+  </data>
+  <data name="Approvedby" xml:space="preserve">
+    <value>Approved by</value>
+  </data>
+  <data name="ApprovedName" xml:space="preserve">
+    <value>Approved Name</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BatchAdd" xml:space="preserve">
+    <value>Batch Add</value>
+  </data>
+  <data name="BatchApproveUpdate" xml:space="preserve">
+    <value>Batch Approved Status Updated Successfully</value>
+  </data>
+  <data name="BatchClosedUpdate" xml:space="preserve">
+    <value>Batch Closed Status Updated Successfully</value>
+  </data>
+  <data name="BatchDelete" xml:space="preserve">
+    <value>Batch Delete</value>
+  </data>
+  <data name="BatchDeleteUpdate" xml:space="preserve">
+    <value>Batch Deleted Successfully</value>
+  </data>
+  <data name="BatchEdit" xml:space="preserve">
+    <value>Batch Edit</value>
+  </data>
+  <data name="BatchInProgressUpdate" xml:space="preserve">
+    <value>Batch In Progress Status Updated Successfully</value>
+  </data>
+  <data name="BatchMatrixNotUpdate" xml:space="preserve">
+    <value>This batch does not have any matrix updates.Please click Make Changes button to add the matrix updates.</value>
+  </data>
+  <data name="BatchMoveInProgressConfirmation" xml:space="preserve">
+    <value>Are you sure want to Batch Status Move In Progress?</value>
+  </data>
+  <data name="BatchProcessApplied" xml:space="preserve">
+    <value>Batch Process Applied Successfully</value>
+  </data>
+  <data name="BatchPublished" xml:space="preserve">
+    <value>Batch Published</value>
+  </data>
+  <data name="BatchPublishStatus" xml:space="preserve">
+    <value>Batch Published Status Updated Successfully</value>
+  </data>
+  <data name="BatchPublishUpdate" xml:space="preserve">
+    <value>Batch Published Updated Successfully</value>
+  </data>
+  <data name="BatchReviewUpdate" xml:space="preserve">
+    <value>Batch Review Status Updated Successfully</value>
+  </data>
+  <data name="batch_id" xml:space="preserve">
+    <value>batchid</value>
+  </data>
+  <data name="CFP" xml:space="preserve">
+    <value>CFP</value>
+  </data>
+  <data name="CH" xml:space="preserve">
+    <value>CH</value>
+  </data>
+  <data name="CreateBatch" xml:space="preserve">
+    <value>Create Batch</value>
+  </data>
+  <data name="CreateBatchInProgress" xml:space="preserve">
+    <value>Please Create Batch Inprogress status only.</value>
+  </data>
+  <data name="CreateNewEnvironment" xml:space="preserve">
+    <value>Create New Environment</value>
+  </data>
+  <data name="DataSource" xml:space="preserve">
+    <value>Data Source</value>
+  </data>
+  <data name="DataSources" xml:space="preserve">
+    <value>Data Source:</value>
+  </data>
+  <data name="DataType" xml:space="preserve">
+    <value>DataType</value>
+  </data>
+  <data name="DataTypeID" xml:space="preserve">
+    <value>DataType ID</value>
+  </data>
+  <data name="DataUpdatedSuccessfully" xml:space="preserve">
+    <value>Data Updated Successfully</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Default Value</value>
+  </data>
+  <data name="DeleteBatchConfirmation" xml:space="preserve">
+    <value>Are you sure want to delete this batch?</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="EditBatches" xml:space="preserve">
+    <value>Edit Batch</value>
+  </data>
+  <data name="Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="EnterBatchName" xml:space="preserve">
+    <value>Please enter Batch Name.</value>
+  </data>
+  <data name="EnterDatabaseName" xml:space="preserve">
+    <value>Please enter the Database Name.</value>
+  </data>
+  <data name="EnterEffectiveDate" xml:space="preserve">
+    <value>Please enter Effective Date.</value>
+  </data>
+  <data name="EnterName" xml:space="preserve">
+    <value>Please enter the Name.</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Please enter the Password.</value>
+  </data>
+  <data name="EnterServer" xml:space="preserve">
+    <value>Please enter the Server.</value>
+  </data>
+  <data name="EnterStatus" xml:space="preserve">
+    <value>Please enter Status.</value>
+  </data>
+  <data name="EnterUrl" xml:space="preserve">
+    <value>Please enter the Url.</value>
+  </data>
+  <data name="EnterUserName" xml:space="preserve">
+    <value>Please enter the Username.</value>
+  </data>
+  <data name="EntityID" xml:space="preserve">
+    <value>Entity ID</value>
+  </data>
+  <data name="erroroccured" xml:space="preserve">
+    <value>error occured</value>
+  </data>
+  <data name="False" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="GetData" xml:space="preserve">
+    <value>Get Data</value>
+  </data>
+  <data name="Hotfix" xml:space="preserve">
+    <value>Hotfix</value>
+  </data>
+  <data name="IN" xml:space="preserve">
+    <value>IN</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="MaintenanceDate" xml:space="preserve">
+    <value>MaintenanceDate</value>
+  </data>
+  <data name="MaintenDate" xml:space="preserve">
+    <value>Maintenance Date</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="MatrixDescriptionupdatedsuccessfully" xml:space="preserve">
+    <value>Matrix Description updated successfully</value>
+  </data>
+  <data name="MatrixDetails" xml:space="preserve">
+    <value>Matrix Details</value>
+  </data>
+  <data name="MatrixID" xml:space="preserve">
+    <value>MatrixID</value>
+  </data>
+  <data name="MatrixNameDoesNotExist" xml:space="preserve">
+    <value>Matrix Name Does Not Exist</value>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="OBS" xml:space="preserve">
+    <value>OBS</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="PleaseContactAdministrator" xml:space="preserve">
+    <value>Please Contact Administrator</value>
+  </data>
+  <data name="PriceUpdateData" xml:space="preserve">
+    <value>Price Update Data</value>
+  </data>
+  <data name="RejectReview" xml:space="preserve">
+    <value>Reject Review</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="Somethingwentwrong" xml:space="preserve">
+    <value>Something wont wrong</value>
+  </data>
+  <data name="True" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="UK" xml:space="preserve">
+    <value>UK</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Viewer" xml:space="preserve">
+    <value>Viewer</value>
+  </data>
+  <data name="Base" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="BaseandOption" xml:space="preserve">
+    <value>Base and Option</value>
+  </data>
+  <data name="ChangeReportSummary" xml:space="preserve">
+    <value>Price Update Batch Page - View/Change Report Summary</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Edit User</value>
+  </data>
+  <data name="EffectiveChange" xml:space="preserve">
+    <value>Effective Change (%)</value>
+  </data>
+  <data name="EnteranCorrectCFPOBS" xml:space="preserve">
+    <value>Enter an Correct CFP (or) OBS</value>
+  </data>
+  <data name="EnterFirstName" xml:space="preserve">
+    <value>Please enter First Name.</value>
+  </data>
+  <data name="EnterIdentifier" xml:space="preserve">
+    <value>Please enter Identifier</value>
+  </data>
+  <data name="EnterLastName" xml:space="preserve">
+    <value>Please enter Last Name.</value>
+  </data>
+  <data name="EnterMatrixName" xml:space="preserve">
+    <value>Please Enter Matrix Name</value>
+  </data>
+  <data name="EnterProduct" xml:space="preserve">
+    <value>Please enter Product</value>
+  </data>
+  <data name="EnterSpecificMatrix" xml:space="preserve">
+    <value>Please enter Specific Matrix</value>
+  </data>
+  <data name="EnterUserEmail" xml:space="preserve">
+    <value>Please enter User Email.</value>
+  </data>
+  <data name="EnterUserEnvironment" xml:space="preserve">
+    <value>Please choose a Environment.</value>
+  </data>
+  <data name="EnterUserLanguage" xml:space="preserve">
+    <value>Please choose a Language.</value>
+  </data>
+  <data name="EnterUserRole" xml:space="preserve">
+    <value>Please choose User Role.</value>
+  </data>
+  <data name="EntityIDs" xml:space="preserve">
+    <value>EntityID</value>
+  </data>
+  <data name="IncrementID" xml:space="preserve">
+    <value>IncrementID</value>
+  </data>
+  <data name="MatrixOptions" xml:space="preserve">
+    <value>Matrix Options:</value>
+  </data>
+  <data name="Multiple" xml:space="preserve">
+    <value>Multiple</value>
+  </data>
+  <data name="Multiplier" xml:space="preserve">
+    <value>Multiplier</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New %</value>
+  </data>
+  <data name="NonMultiple" xml:space="preserve">
+    <value>NonMultiple</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Old %</value>
+  </data>
+  <data name="OptionName" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Overrideusername" xml:space="preserve">
+    <value>Override username</value>
+  </data>
+  <data name="Passwordsaved" xml:space="preserve">
+    <value>Password Saved</value>
+  </data>
+  <data name="Passwordsdonotmatch" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="Pleasecheckatleastonerow" xml:space="preserve">
+    <value>Please check at least one row.</value>
+  </data>
+  <data name="PleaseenterAmount" xml:space="preserve">
+    <value>Please enter Amount.</value>
+  </data>
+  <data name="Pleaseenteratleastonenewprice" xml:space="preserve">
+    <value>Please enter at least one new price.</value>
+  </data>
+  <data name="PleaseenterPercentage" xml:space="preserve">
+    <value>Please enter Percentage.</value>
+  </data>
+  <data name="PleaseenterRetrieveBy" xml:space="preserve">
+    <value>Please enter RetrieveBy</value>
+  </data>
+  <data name="Pleasefillthetable" xml:space="preserve">
+    <value>Please fill the table.</value>
+  </data>
+  <data name="PriceUpdateBatchMakeChanges" xml:space="preserve">
+    <value>Price Update Batch - Make Changes</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SearchCriteria" xml:space="preserve">
+    <value>Search Criteria (select one or more)</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>--Select--</value>
+  </data>
+  <data name="SelectsAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="SpecificMatrices" xml:space="preserve">
+    <value>Specific Matrix</value>
+  </data>
+  <data name="ThisMatrixpricerevisionisalreadyinprogress" xml:space="preserve">
+    <value>This Matrix price revision is already in progress under Batch</value>
+  </data>
+  <data name="TokeepthechangesclickSave" xml:space="preserve">
+    <value>To keep the changes, click Save</value>
+  </data>
+  <data name="Unexpectederror" xml:space="preserve">
+    <value>Unexpected error!</value>
+  </data>
+  <data name="Userdeletionconfirmation" xml:space="preserve">
+    <value>User deletion confirmation</value>
+  </data>
+  <data name="Usernamealreadyexist" xml:space="preserve">
+    <value>Username already exist!</value>
+  </data>
+  <data name="Usernamechangedsuccessfully" xml:space="preserve">
+    <value>Username changed successfully!</value>
+  </data>
+  <data name="DataSavedSuccessfully" xml:space="preserve">
+    <value>Data Saved Successfully</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>FirstName</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="ProductLine" xml:space="preserve">
+    <value>Product Line:</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>UserId</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>UserRole</value>
+  </data>
+  <data name="DataNotFound" xml:space="preserve">
+    <value>Data Not Found</value>
+  </data>
+  <data name="NotificationsView" xml:space="preserve">
+    <value>Notifications View</value>
+  </data>
+  <data name="BatchAdded" xml:space="preserve">
+    <value>Batch Added</value>
+  </data>
+  <data name="BatchApproved" xml:space="preserve">
+    <value>Batch Approved</value>
+  </data>
+  <data name="BatchDenied" xml:space="preserve">
+    <value>Batch Denied</value>
+  </data>
+  <data name="BatchHotfixManuallyApplied" xml:space="preserve">
+    <value>Batch - Hotfix Manually Applied</value>
+  </data>
+  <data name="BatchModified" xml:space="preserve">
+    <value>Batch Modified</value>
+  </data>
+  <data name="BatchPublishrequested" xml:space="preserve">
+    <value>Batch Publish requested</value>
+  </data>
+  <data name="BatchSubmitted" xml:space="preserve">
+    <value>Batch Submitted</value>
+  </data>
+  <data name="APR" xml:space="preserve">
+    <value>APR</value>
+  </data>
+  <data name="CA" xml:space="preserve">
+    <value>CA</value>
+  </data>
+  <data name="changepercentage" xml:space="preserve">
+    <value>changepercentage</value>
+  </data>
+  <data name="D" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="DataSourcedet" xml:space="preserve">
+    <value>DataSource</value>
+  </data>
+  <data name="de" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="ErrorLog" xml:space="preserve">
+    <value>Error Log</value>
+  </data>
+  <data name="InitialCatalog" xml:space="preserve">
+    <value>Initial Catalog</value>
+  </data>
+  <data name="LA" xml:space="preserve">
+    <value>LA</value>
+  </data>
+  <data name="MatrixNames" xml:space="preserve">
+    <value>MatrixName</value>
+  </data>
+  <data name="ME" xml:space="preserve">
+    <value>ME</value>
+  </data>
+  <data name="NewAmount" xml:space="preserve">
+    <value>NewAmount</value>
+  </data>
+  <data name="OldPrices" xml:space="preserve">
+    <value>OldPrice</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="US" xml:space="preserve">
+    <value>US</value>
+  </data>
+  <data name="BatchObjectModified" xml:space="preserve">
+    <value>Batch Object Modified</value>
+  </data>
+  <data name="Failure" xml:space="preserve">
+    <value>Failure</value>
+  </data>
+  <data name="PriceUpdate" xml:space="preserve">
+    <value>PriceUpdate</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="RoundtoPenny" xml:space="preserve">
+    <value>Round to Penny</value>
+  </data>
+  <data name="MassDownload" xml:space="preserve">
+    <value>Mass Download(check more then 1)</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="UserMarket" xml:space="preserve">
+    <value>UserMarket</value>
+  </data>
+  <data name="Pleaseselectatleastoneusermarket" xml:space="preserve">
+    <value>Please select at least one user market</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="SalesOffice" xml:space="preserve">
+    <value>SalesOffice</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="StandardItemsReportSummary" xml:space="preserve">
+    <value>Standard Items Report Summary</value>
+  </data>
+  <data name="PartNumbers" xml:space="preserve">
+    <value>Part Number :</value>
+  </data>
+  <data name="PriceGroup" xml:space="preserve">
+    <value>Price Group :</value>
+  </data>
+  <data name="StatCode" xml:space="preserve">
+    <value>Stat Code :</value>
+  </data>
+  <data name="SalesOffices" xml:space="preserve">
+    <value>Sales Office :</value>
+  </data>
+  <data name="DownloadData" xml:space="preserve">
+    <value>Download Data</value>
+  </data>
+  <data name="NotAllowedNewpriceZero" xml:space="preserve">
+    <value>Not allowed for saved records in because all records newprice in zero</value>
+  </data>
+  <data name="SalesOfficeTitle" xml:space="preserve">
+    <value>Sales Office</value>
+  </data>
+  <data name="AlreadyExistingSalesOffice" xml:space="preserve">
+    <value>Already Existing Sales Office</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>CreatedDate</value>
+  </data>
+  <data name="CreateSalesOffice" xml:space="preserve">
+    <value>Create Sales Office</value>
+  </data>
+  <data name="EditSalesOffice" xml:space="preserve">
+    <value>Edit Sales Office</value>
+  </data>
+  <data name="EnterDescription" xml:space="preserve">
+    <value>Enter Description</value>
+  </data>
+  <data name="EnterSalesOffice" xml:space="preserve">
+    <value>Enter Sales Office</value>
+  </data>
+  <data name="LastModifiedDate" xml:space="preserve">
+    <value>LastModifiedDate</value>
+  </data>
+  <data name="MatrixField" xml:space="preserve">
+    <value>MatrixField</value>
+  </data>
+  <data name="AlreadyUserNameFound" xml:space="preserve">
+    <value>Already this username found check differentname</value>
+  </data>
+  <data name="Itemnotfound" xml:space="preserve">
+    <value>Item not found in catalog</value>
+  </data>
+  <data name="AlreadyExistingBatchName" xml:space="preserve">
+    <value>Already Existing Batch Name</value>
+  </data>
+  <data name="StandardItemsEnvironment" xml:space="preserve">
+    <value>Standard Items Environment?</value>
+  </data>
+  <data name="StandardItemsEnvironments" xml:space="preserve">
+    <value>Is Standard Items Environment?</value>
+  </data>
+  <data name="BatchIds" xml:space="preserve">
+    <value>BatchId</value>
+  </data>
+  <data name="CAD" xml:space="preserve">
+    <value>CAD</value>
+  </data>
+  <data name="CNY" xml:space="preserve">
+    <value>CNY</value>
+  </data>
+  <data name="Downloaddataemailsendsuccessfully" xml:space="preserve">
+    <value>Download data email send successfully</value>
+  </data>
+  <data name="EnterPartNumber" xml:space="preserve">
+    <value>Enter Part Number</value>
+  </data>
+  <data name="GBP" xml:space="preserve">
+    <value>GBP</value>
+  </data>
+  <data name="INR" xml:space="preserve">
+    <value>INR</value>
+  </data>
+  <data name="PushToLN" xml:space="preserve">
+    <value>Push To LN</value>
+  </data>
+  <data name="SelectPriceGroup" xml:space="preserve">
+    <value>Select Price Group</value>
+  </data>
+  <data name="SelectSalesOffice" xml:space="preserve">
+    <value>Select Sales Office</value>
+  </data>
+  <data name="SelectStatCode" xml:space="preserve">
+    <value>Select Stat Code</value>
+  </data>
+  <data name="StatCodes" xml:space="preserve">
+    <value>Stat Code :</value>
+  </data>
+  <data name="ThisMatrixpricerevisionisalreadyinprogressunderbatch" xml:space="preserve">
+    <value>This Matrix price revision is already in progress under Batch</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="USD" xml:space="preserve">
+    <value>USD</value>
+  </data>
+  <data name="EnterPriceGroup" xml:space="preserve">
+    <value>Enter Price Group</value>
+  </data>
+  <data name="PriceGroupLabel" xml:space="preserve">
+    <value>Price Group</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="InActive" xml:space="preserve">
+    <value>In Active</value>
+  </data>
+  <data name="nalabel" xml:space="preserve">
+    <value>n/a</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SpecificMatrixlabel" xml:space="preserve">
+    <value>SpecificMatrix</value>
+  </data>
+  <data name="StandardItemsEnvironmentLabel" xml:space="preserve">
+    <value>StandardItemsEnvironment</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="EnvironmentIdlabel" xml:space="preserve">
+    <value>EnvironmentId</value>
+  </data>
+  <data name="MatrixRow" xml:space="preserve">
+    <value>MatrixRow</value>
+  </data>
+  <data name="MatrixRowColumn" xml:space="preserve">
+    <value>MatrixRowColumn</value>
+  </data>
+  <data name="Selectlabel" xml:space="preserve">
+    <value>-- Select --</value>
+  </data>
+  <data name="StatCodeLabel" xml:space="preserve">
+    <value>Stat Code</value>
+  </data>
+  <data name="PartNumberLabel" xml:space="preserve">
+    <value>PartNumber</value>
+  </data>
+  <data name="CreateNewBatch" xml:space="preserve">
+    <value>Create New batch</value>
+  </data>
+  <data name="Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
+  <data name="DimUsersMarket" xml:space="preserve">
+    <value>Dim_UsersMarket</value>
+  </data>
+  <data name="EntityIDLabel" xml:space="preserve">
+    <value>EntityID</value>
+  </data>
+  <data name="IDLabel" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ApprovalPending" xml:space="preserve">
+    <value>Approval Pending</value>
+  </data>
+  <data name="CreateNewUser" xml:space="preserve">
+    <value>Create New User</value>
+  </data>
+  <data name="Fld" xml:space="preserve">
+    <value>Fld</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="truelabel" xml:space="preserve">
+    <value>true</value>
+  </data>
+  <data name="CreateLNSalesOffice" xml:space="preserve">
+    <value>Create LN Sales Office</value>
+  </data>
+  <data name="EditLNSalesOffice" xml:space="preserve">
+    <value>Edit LN Sales Office</value>
+  </data>
+  <data name="LNCategoryAdeptMarket" xml:space="preserve">
+    <value>LN Category-ADEPT Market</value>
+  </data>
+  <data name="LNSalesOffice" xml:space="preserve">
+    <value>LN Sales Office</value>
+  </data>
+  <data name="LNSalesOfficeCategoryStructure" xml:space="preserve">
+    <value>LN SalesOffice/Category Structure</value>
+  </data>
+  <data name="AdeptMarket" xml:space="preserve">
+    <value>Adept Market</value>
+  </data>
+  <data name="namelabel" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="EnterPriceBook" xml:space="preserve">
+    <value>Enter Price Book</value>
+  </data>
+  <data name="PriceBookLabel" xml:space="preserve">
+    <value>PriceBook</value>
+  </data>
+  <data name="Matrixlabel" xml:space="preserve">
+    <value>Matrix_</value>
+  </data>
+  <data name="falselabel" xml:space="preserve">
+    <value>false</value>
+  </data>
+  <data name="andisineffect" xml:space="preserve">
+    <value>and is in effect.</value>
+  </data>
+  <data name="ARequesthasbeenmadeforyoutoreviewandapproverejectpricechangesinBatch" xml:space="preserve">
+    <value>A Request has been made for you to review and approve/reject price changes in Batch</value>
+  </data>
+  <data name="Batchaddedby" xml:space="preserve">
+    <value>Batch added by</value>
+  </data>
+  <data name="Batchapprovedby" xml:space="preserve">
+    <value>Batch approved by</value>
+  </data>
+  <data name="BatchDeletedby" xml:space="preserve">
+    <value>Batch Deleted by</value>
+  </data>
+  <data name="Batchdeniedby" xml:space="preserve">
+    <value>Batch denied by</value>
+  </data>
+  <data name="BatchmodifiedinBatchEditPageby" xml:space="preserve">
+    <value>Batch modified in Batch Edit Page by</value>
+  </data>
+  <data name="Batchpublishedatenvironment" xml:space="preserve">
+    <value>Batch published at environment</value>
+  </data>
+  <data name="Batchpublishrequestedatenvironment" xml:space="preserve">
+    <value>Batch publish requested at environment</value>
+  </data>
+  <data name="Batchsubmittedby" xml:space="preserve">
+    <value>Batch submitted by</value>
+  </data>
+  <data name="by" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="datelabel" xml:space="preserve">
+    <value>01-01-0001 12:00:00</value>
+  </data>
+  <data name="DearAll" xml:space="preserve">
+    <value>Dear All,</value>
+  </data>
+  <data name="DearEditor" xml:space="preserve">
+    <value>Dear Editor,</value>
+  </data>
+  <data name="DearManager" xml:space="preserve">
+    <value>Dear Manager,</value>
+  </data>
+  <data name="DONOTREPLY" xml:space="preserve">
+    <value>&lt;DO NOT REPLY&gt;</value>
+  </data>
+  <data name="DownloadPriceUpdateData" xml:space="preserve">
+    <value>DownloadPriceUpdateData</value>
+  </data>
+  <data name="DownloadProductLineMatrixDataforBatchName" xml:space="preserve">
+    <value>Download Product Line Matrix Data for Batch Name</value>
+  </data>
+  <data name="HotfixDeployed" xml:space="preserve">
+    <value>- Hotfix Deployed &lt;DO NOT REPLY&gt;</value>
+  </data>
+  <data name="iscompleteandhasbeenapprovedItwilltakeeffectonEffectivedate" xml:space="preserve">
+    <value>is complete and has been approved. It will take effect on Effective date</value>
+  </data>
+  <data name="iscompleteandhasbeenrejectedConsultwiththereviewerdirectlyforreasonswhyitwasrejected" xml:space="preserve">
+    <value>is complete and has been rejected. Consult with the reviewer directly for reasons why it was rejected.</value>
+  </data>
+  <data name="Itemnames" xml:space="preserve">
+    <value>Item Names:</value>
+  </data>
+  <data name="Matrixnamelabel" xml:space="preserve">
+    <value>Matrix Names:</value>
+  </data>
+  <data name="oncePublishedThisbatchisNOTyetpublishedConsultwithyourManagerdirectlyiftheBatchistobeHotfixedtoProduction" xml:space="preserve">
+    <value>once Published.This batch is NOT yet published. Consult with your Manager directly if the Batch is to be Hotfixed to Production.</value>
+  </data>
+  <data name="onEffectivedate" xml:space="preserve">
+    <value>on Effective date</value>
+  </data>
+  <data name="Partnumberslabel" xml:space="preserve">
+    <value>PartNumber:</value>
+  </data>
+  <data name="PleasereviewatyourearliestconvenienceTheupdatewillnotproceedwithoutapproval" xml:space="preserve">
+    <value>Please review at your earliest convenience. The update will not proceed without approval.</value>
+  </data>
+  <data name="Pricegroupslabel" xml:space="preserve">
+    <value>PriceGroup:</value>
+  </data>
+  <data name="pricelabel" xml:space="preserve">
+    <value>Price_</value>
+  </data>
+  <data name="ProductLineMatrixDataDownloadedexcelforBatchName" xml:space="preserve">
+    <value>Product Line Matrix Data Downloaded excel for Batch Name</value>
+  </data>
+  <data name="requiresReviewandApproval" xml:space="preserve">
+    <value>requires Review and Approval &lt;DO NOT REPLY&gt;</value>
+  </data>
+  <data name="ReviewApproved" xml:space="preserve">
+    <value>Review - Approved &lt;DO NOT REPLY&gt;</value>
+  </data>
+  <data name="ReviewRejected" xml:space="preserve">
+    <value>Review - Rejected &lt;DO NOT REPLY&gt;</value>
+  </data>
+  <data name="rowaffected" xml:space="preserve">
+    <value>row affected</value>
+  </data>
+  <data name="rowsaffected" xml:space="preserve">
+    <value>rows affected</value>
+  </data>
+  <data name="Salesofficelabel" xml:space="preserve">
+    <value>SalesOffice:</value>
+  </data>
+  <data name="SettobePublishedonEffectivedate" xml:space="preserve">
+    <value>- Set to be Published on Effective date</value>
+  </data>
+  <data name="Statcodeslabel" xml:space="preserve">
+    <value>StatCode:</value>
+  </data>
+  <data name="TherequesttoreviewandapproverejectpricechangesinBatch" xml:space="preserve">
+    <value>The request to review and approve/reject price changes in Batch</value>
+  </data>
+  <data name="usedinthatMatrix" xml:space="preserve">
+    <value>used in that Matrix</value>
+  </data>
+  <data name="usedinthatProduct" xml:space="preserve">
+    <value>used in that Product</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="wasHotfixedto" xml:space="preserve">
+    <value>was Hotfixed to</value>
+  </data>
+  <data name="wassettobePublishedto" xml:space="preserve">
+    <value>was set to be Published to</value>
+  </data>
+  <data name="youcanreturntheerrorshere" xml:space="preserve">
+    <value>you can return the errors here!</value>
+  </data>
+  <data name="AllItems" xml:space="preserve">
+    <value>All Items</value>
+  </data>
+  <data name="AllPriceGroupinSO" xml:space="preserve">
+    <value>All PriceGroup in SO</value>
+  </data>
+  <data name="AllStateCodesinSO" xml:space="preserve">
+    <value>All StateCodes in SO</value>
+  </data>
+  <data name="BatchHistoryView" xml:space="preserve">
+    <value>BatchHistoryView</value>
+  </data>
+  <data name="BatchProcessLabelView" xml:space="preserve">
+    <value>BatchProcessView</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateBatchView" xml:space="preserve">
+    <value>CreateBatch</value>
+  </data>
+  <data name="CreateEnvironmentView" xml:space="preserve">
+    <value>CreateEnvironment</value>
+  </data>
+  <data name="CreateSalesOfficeView" xml:space="preserve">
+    <value>CreateSalesOffice</value>
+  </data>
+  <data name="CreateUserView" xml:space="preserve">
+    <value>CreateUser</value>
+  </data>
+  <data name="MatrixData" xml:space="preserve">
+    <value>MatrixData</value>
+  </data>
+  <data name="MatrixLabelView" xml:space="preserve">
+    <value>MatrixView</value>
+  </data>
+  <data name="Matrixviewlabel" xml:space="preserve">
+    <value>Matrix View</value>
+  </data>
+  <data name="NotAccepted" xml:space="preserve">
+    <value>Not_Accepted</value>
+  </data>
+  <data name="NotificationsViewLabel" xml:space="preserve">
+    <value>NotificationsView</value>
+  </data>
+  <data name="OnePriceGroup" xml:space="preserve">
+    <value>One PriceGroup</value>
+  </data>
+  <data name="OneStateCode" xml:space="preserve">
+    <value>One StateCode</value>
+  </data>
+  <data name="partnumberstring" xml:space="preserve">
+    <value>Part number</value>
+  </data>
+  <data name="percentagelabel" xml:space="preserve">
+    <value>percentage</value>
+  </data>
+  <data name="PriceUpdateDataView" xml:space="preserve">
+    <value>PriceUpdateData</value>
+  </data>
+  <data name="PriceUpdateView" xml:space="preserve">
+    <value>PriceUpdateView</value>
+  </data>
+  <data name="SalesOfficeView" xml:space="preserve">
+    <value>SalesOffice</value>
+  </data>
+  <data name="StandardItemsView" xml:space="preserve">
+    <value>StandardItemsView</value>
+  </data>
+  <data name="UsersAdminView" xml:space="preserve">
+    <value>UsersAdmin</value>
+  </data>
+  <data name="UsersManagement" xml:space="preserve">
+    <value>UserManagement</value>
+  </data>
+  <data name="aslabel" xml:space="preserve">
+    <value>as</value>
+  </data>
+  <data name="createddttm" xml:space="preserve">
+    <value>createddttm</value>
+  </data>
+  <data name="DimMarket" xml:space="preserve">
+    <value>Dim_Market</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="UsersNotAuthorized" xml:space="preserve">
+    <value>UserNotAuthorized</value>
+  </data>
+  <data name="Areyousureyouwanttodeleteuser" xml:space="preserve">
+    <value>Are you sure you want to delete user</value>
+  </data>
+  <data name="MatrixDetails_CSV" xml:space="preserve">
+    <value>MatrixDetails_CSV</value>
+  </data>
+  <data name="MatrixDetails_Excel" xml:space="preserve">
+    <value>MatrixDetails_Excel</value>
+  </data>
+  <data name="SelectMatrix" xml:space="preserve">
+    <value>--Select Matrix--</value>
+  </data>
+  <data name="csvlabel" xml:space="preserve">
+    <value>_CSV</value>
+  </data>
+  <data name="CurrentlythisbatchisnotpublishedPleaseselecttheenvironmentsandschedulethisbatchtopublishonEffectivedate" xml:space="preserve">
+    <value>was approved. Currently this batch is not published. Please select the environments and schedule this batch to publish on Effective date</value>
+  </data>
+  <data name="defaultdate" xml:space="preserve">
+    <value>01/01/0001 12:00:00</value>
+  </data>
+  <data name="excellabel" xml:space="preserve">
+    <value>_Excel</value>
+  </data>
+  <data name="MatrixDatalabel" xml:space="preserve">
+    <value>Matrix Data</value>
+  </data>
+  <data name="senttoReviewandApproval" xml:space="preserve">
+    <value>sent to Review and Approval</value>
+  </data>
+  <data name="wasrejectedPleaseconsultwiththereviewerforfurtherdetails" xml:space="preserve">
+    <value>was rejected. Please consult with the reviewer for further details.</value>
+  </data>
+  <data name="wasscheduledtoPublishinenvironment" xml:space="preserve">
+    <value>was scheduled to Publish in environment</value>
+  </data>
+  <data name="pleaseselectatleastoneapprovedby" xml:space="preserve">
+    <value>Please select atleast one approved by</value>
+  </data>
+  <data name="Percentagesymbol" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="pricesymbol" xml:space="preserve">
+    <value>pricesymbol</value>
+  </data>
+  <data name="FldChartImage" xml:space="preserve">
+    <value>Fld_ChartImage</value>
+  </data>
+  <data name="UsersMarket" xml:space="preserve">
+    <value>UsersMarket</value>
+  </data>
+  <data name="CreateMatrixCustom" xml:space="preserve">
+    <value>Create Matrix Custom</value>
+  </data>
+  <data name="CustomField1" xml:space="preserve">
+    <value>CustomField1</value>
+  </data>
+  <data name="CustomField2" xml:space="preserve">
+    <value>CustomField2</value>
+  </data>
+  <data name="CustomField3" xml:space="preserve">
+    <value>CustomField3</value>
+  </data>
+  <data name="CustomField4" xml:space="preserve">
+    <value>CustomField4</value>
+  </data>
+  <data name="CustomField5" xml:space="preserve">
+    <value>CustomField5</value>
+  </data>
+  <data name="CustomField6" xml:space="preserve">
+    <value>CustomField6</value>
+  </data>
+  <data name="MatrixCustom" xml:space="preserve">
+    <value>MatrixCustom</value>
+  </data>
+  <data name="MatrixCustomTitle" xml:space="preserve">
+    <value>Matrix Custom</value>
+  </data>
+  <data name="AlreadyExistingMatrixCustom" xml:space="preserve">
+    <value>Already Existing Matrix Custom</value>
+  </data>
+  <data name="CreateMatrixCustomTitle" xml:space="preserve">
+    <value>CreateMatrixCustom</value>
+  </data>
+  <data name="EditMatrixCustom" xml:space="preserve">
+    <value>Edit Matrix Custom</value>
+  </data>
+  <data name="EnterCustomField1" xml:space="preserve">
+    <value>Enter Custom Field1</value>
+  </data>
+  <data name="EnterCustomField2" xml:space="preserve">
+    <value>Enter Custom Field2</value>
+  </data>
+  <data name="EnterCustomField3" xml:space="preserve">
+    <value>Enter Custom Field3</value>
+  </data>
+  <data name="EnterCustomField4" xml:space="preserve">
+    <value>Enter Custom Field4</value>
+  </data>
+  <data name="EnterCustomField5" xml:space="preserve">
+    <value>Enter Custom Field5</value>
+  </data>
+  <data name="EnterCustomField6" xml:space="preserve">
+    <value>Enter Custom Field6</value>
+  </data>
+  <data name="NoDataTitle" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+  <data name="BatchRecordsCount" xml:space="preserve">
+    <value>Batch Records Count</value>
+  </data>
+  <data name="BatchStatusComparison" xml:space="preserve">
+    <value>Batch Status Comparison</value>
+  </data>
+  <data name="EnvironmentCount" xml:space="preserve">
+    <value>Environment Count</value>
+  </data>
+  <data name="MatrixDataTypeCount" xml:space="preserve">
+    <value>Matrix DataType Count</value>
+  </data>
+  <data name="MatrixVersionCount" xml:space="preserve">
+    <value>Matrix Version Count</value>
+  </data>
+  <data name="MultiplePriceandNonMultiplePriceMatrixCount" xml:space="preserve">
+    <value>Multiple Price and Non Multiple Price Matrix Count</value>
+  </data>
+  <data name="PriceUpdateToolGraph" xml:space="preserve">
+    <value>Price Update Tool Graph</value>
+  </data>
+  <data name="StandardItemsCount" xml:space="preserve">
+    <value>Standard Items Count</value>
+  </data>
+  <data name="UsersRoleCount" xml:space="preserve">
+    <value>Users Role Count</value>
+  </data>
+  <data name="SelectBatchName" xml:space="preserve">
+    <value>Select Batch Name</value>
+  </data>
+  <data name="EnterAdeptMarket" xml:space="preserve">
+    <value>Enter Adept Market</value>
+  </data>
+  <data name="MultiplePriceMatrix" xml:space="preserve">
+    <value>Multiple Price Matrix</value>
+  </data>
+  <data name="PriceUpdateMatrixGraph" xml:space="preserve">
+    <value>Price Update Matrix Graph</value>
+  </data>
+  <data name="ProductLineMatrixGraph" xml:space="preserve">
+    <value>Product Line Matrix Graph</value>
+  </data>
+  <data name="ProductMatrix" xml:space="preserve">
+    <value>Product Matrix</value>
+  </data>
+  <data name="recordsfoundAreyousurewanttodeletethisrecordsalso" xml:space="preserve">
+    <value>records found.Are you sure want to delete this records also?</value>
+  </data>
+  <data name="rowsfoundAreyousurewanttodeletethisrecordalso" xml:space="preserve">
+    <value>row found.Are you sure want to delete this record also?</value>
+  </data>
+  <data name="SelectProductLine" xml:space="preserve">
+    <value>Select Product Line</value>
+  </data>
+  <data name="SelfServePricingTool" xml:space="preserve">
+    <value>Self-Serve Pricing Tool</value>
+  </data>
+  <data name="SinglePriceMatrix" xml:space="preserve">
+    <value>Single Price Matrix</value>
+  </data>
+  <data name="wehavethisbatchisto" xml:space="preserve">
+    <value>We have this batch is</value>
+  </data>
+  <data name="wehavethisstandardbatchitemsisto" xml:space="preserve">
+    <value>We have this standard batch items is</value>
+  </data>
+  <data name="AllMatrixData" xml:space="preserve">
+    <value>AllMatrixData</value>
+  </data>
+  <data name="FieldName" xml:space="preserve">
+    <value>FieldName</value>
+  </data>
+  <data name="Areyousurewanttodeletethisbatchname" xml:space="preserve">
+    <value>Are you sure want to delete this batch name</value>
+  </data>
+  <data name="Areyousurewanttodeletethismatrixcustomname" xml:space="preserve">
+    <value>Are you sure want to delete this matrix custom name</value>
+  </data>
+  <data name="DeleteEnvironmentConfirmation" xml:space="preserve">
+    <value>Are you sure want to delete this environment?</value>
+  </data>
+  <data name="DeleteSalesOfficeConfirmation" xml:space="preserve">
+    <value>Are you sure want to delete this salesoffice</value>
+  </data>
+  <data name="ImportantNote" xml:space="preserve">
+    <value>Important Note :</value>
+  </data>
+  <data name="PriceUpdateWebApp" xml:space="preserve">
+    <value>Price Update Web App</value>
+  </data>
+  <data name="wehavethissalesofficeisto" xml:space="preserve">
+    <value>We have this salesoffice is</value>
+  </data>
+  <data name="PriceUpdateMatrixGraphTitle" xml:space="preserve">
+    <value>PriceUpdateMatrixGraph</value>
+  </data>
+  <data name="PriceUpdateToolGraphTitle" xml:space="preserve">
+    <value>PriceUpdateToolGraph</value>
+  </data>
+  <data name="ProductLineMatrixGraphTitle" xml:space="preserve">
+    <value>ProductLineMatrixGraph</value>
+  </data>
+  <data name="LineCount" xml:space="preserve">
+    <value>Line Count</value>
+  </data>
+  <data name="Version1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Version2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BatchHistoryViewTitle" xml:space="preserve">
+    <value>Batch History View</value>
+  </data>
+  <data name="CSV" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="Excel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="UserMarketValidation" xml:space="preserve">
+    <value>You can choose once All type user market then not allowed any other user market select try again</value>
+  </data>
+  <data name="ProcessorTool" xml:space="preserve">
+    <value>Processor Tool</value>
+  </data>
+  <data name="ProcessTitle" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="Command" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="CreateProcess" xml:space="preserve">
+    <value>Create Process</value>
+  </data>
+  <data name="EditProcess" xml:space="preserve">
+    <value>Edit Process</value>
+  </data>
+  <data name="EnterCommand" xml:space="preserve">
+    <value>Enter Command</value>
+  </data>
+  <data name="AlreadyExistingProcessName" xml:space="preserve">
+    <value>Already Existing Process Name</value>
+  </data>
+  <data name="Areyousurewanttodeletethisstoprocess" xml:space="preserve">
+    <value>Are you sure want to delete this process</value>
+  </data>
+  <data name="CreateProcessTitle" xml:space="preserve">
+    <value>CreateProcess</value>
+  </data>
+  <data name="CreatedByTitle" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="CreatedDateTitle" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="ProcessIdTitle" xml:space="preserve">
+    <value>Process ID</value>
+  </data>
+  <data name="CreateServer" xml:space="preserve">
+    <value>Create Server</value>
+  </data>
+  <data name="CreateServerTitle" xml:space="preserve">
+    <value>CreateServer</value>
+  </data>
+  <data name="EditServer" xml:space="preserve">
+    <value>Edit Server</value>
+  </data>
+  <data name="ServersTitle" xml:space="preserve">
+    <value>Servers</value>
+  </data>
+  <data name="AlreadyExistingServerName" xml:space="preserve">
+    <value>Already Existing Server Name</value>
+  </data>
+  <data name="Areyousurewanttodeletethisprocessgroup" xml:space="preserve">
+    <value>Are you sure want to delete this Process Group</value>
+  </data>
+  <data name="Areyousurewanttodeletethisserver" xml:space="preserve">
+    <value>Are you sure want to delete this server</value>
+  </data>
+  <data name="EnterServerName" xml:space="preserve">
+    <value>Enter Server Name</value>
+  </data>
+  <data name="ProcessGroupID" xml:space="preserve">
+    <value>Process Group ID</value>
+  </data>
+  <data name="ProcessGroupTitle" xml:space="preserve">
+    <value>Process Group</value>
+  </data>
+  <data name="ServerID" xml:space="preserve">
+    <value>Server ID</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Server Name</value>
+  </data>
+  <data name="AlreadyExistingPriceGroupName" xml:space="preserve">
+    <value>Already Existing Price Group Name</value>
+  </data>
+  <data name="CreateProcessGroup" xml:space="preserve">
+    <value>Create Process Group</value>
+  </data>
+  <data name="CreateProcessGroupTitle" xml:space="preserve">
+    <value>CreateProcessGroup</value>
+  </data>
+  <data name="EditProcessGroup" xml:space="preserve">
+    <value>Edit Process Group</value>
+  </data>
+  <data name="ProcessGroup" xml:space="preserve">
+    <value>ProcessGroup</value>
+  </data>
+  <data name="Areyousurewantodeletethisrunid" xml:space="preserve">
+    <value>Are you sure want to delete this run id</value>
+  </data>
+  <data name="CreateRunControlPage" xml:space="preserve">
+    <value>Create Run Control Page</value>
+  </data>
+  <data name="EditRunControlPage" xml:space="preserve">
+    <value>Edit Run Control Page</value>
+  </data>
+  <data name="EnterProcessGroupName" xml:space="preserve">
+    <value>Enter Process Group Name</value>
+  </data>
+  <data name="EnterProcessName" xml:space="preserve">
+    <value>Enter Process Name</value>
+  </data>
+  <data name="Runbytitle" xml:space="preserve">
+    <value>Run By</value>
+  </data>
+  <data name="RunControlPage" xml:space="preserve">
+    <value>RunControlPage</value>
+  </data>
+  <data name="RunControlPageTitle" xml:space="preserve">
+    <value>Run Control Page</value>
+  </data>
+  <data name="Rundttmtitle" xml:space="preserve">
+    <value>RunDttm</value>
+  </data>
+  <data name="CreateRunControlPageTitle" xml:space="preserve">
+    <value>CreateRunControlPage</value>
+  </data>
+  <data name="RunId" xml:space="preserve">
+    <value>RunID</value>
+  </data>
+  <data name="processgroupnamenotexist" xml:space="preserve">
+    <value>Process group name not exist</value>
+  </data>
+  <data name="processnamenotexist" xml:space="preserve">
+    <value>Process name not exist</value>
+  </data>
+  <data name="servernamenotexist" xml:space="preserve">
+    <value>Server name not exist</value>
+  </data>
+  <data name="AlreadyExistingRecord" xml:space="preserve">
+    <value>Already Existing Record</value>
+  </data>
+  <data name="AlreadyExistingRunid" xml:space="preserve">
+    <value>Already Existing Run Id</value>
+  </data>
+  <data name="Areyousurewantodeletethisrecord" xml:space="preserve">
+    <value>Are you sure want to delete this record?</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CreateProcessRequest" xml:space="preserve">
+    <value>Create Process Request</value>
+  </data>
+  <data name="CreateProcessRequestTitle" xml:space="preserve">
+    <value>CreateProcessRequest</value>
+  </data>
+  <data name="ProcessSchedulerRequest" xml:space="preserve">
+    <value>Process Scheduler Request</value>
+  </data>
+  <data name="UserIDTitle" xml:space="preserve">
+    <value>User ID :</value>
+  </data>
+  <data name="RunControlId" xml:space="preserve">
+    <value>Run Control ID :</value>
+  </data>
+  <data name="RunDate" xml:space="preserve">
+    <value>Run Date</value>
+  </data>
+  <data name="RunTime" xml:space="preserve">
+    <value>Run Time</value>
+  </data>
+  <data name="EnterRecurranceName" xml:space="preserve">
+    <value>Enter Recurrance Name</value>
+  </data>
+  <data name="ProcessName" xml:space="preserve">
+    <value>Process Name</value>
+  </data>
+  <data name="Recurrance" xml:space="preserve">
+    <value>Recurrance</value>
+  </data>
+  <data name="RecurranceNameNotExist" xml:space="preserve">
+    <value>Recurrance name does not exist</value>
+  </data>
+  <data name="ProcessMonitorTitle" xml:space="preserve">
+    <value>Process Monitor</value>
+  </data>
+  <data name="ProcessRequestId" xml:space="preserve">
+    <value>ProcessRequestId</value>
+  </data>
+  <data name="ProcessRequestMonitor" xml:space="preserve">
+    <value>ProcessRequestMonitor</value>
+  </data>
+  <data name="ScheduleId" xml:space="preserve">
+    <value>ScheduleId</value>
+  </data>
+  <data name="RunControlIdTitle" xml:space="preserve">
+    <value>RunControlId</value>
+  </data>
+  <data name="AlreadyExistingRunSequenceId" xml:space="preserve">
+    <value>Already Existing Run SequenceId</value>
+  </data>
+  <data name="ProcessGroupName" xml:space="preserve">
+    <value>Process Group Name</value>
+  </data>
+  <data name="RunSequenceId" xml:space="preserve">
+    <value>Run Sequence Id</value>
+  </data>
+  <data name="ScheduleName" xml:space="preserve">
+    <value>Schedule Name</value>
+  </data>
+  <data name="EnterRunSequenceId" xml:space="preserve">
+    <value>Enter Run Sequence Id</value>
+  </data>
+</root>

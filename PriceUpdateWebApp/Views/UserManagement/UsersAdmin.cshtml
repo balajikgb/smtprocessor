@@ -1,0 +1,333 @@
+﻿@using ProcessorWebApp.Resources
+@using Microsoft.AspNetCore.Http.Extensions
+@using Core.Services;
+@using System.Web; 
+@using Core.Enums
+@{
+    var environment = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr] as string;
+}
+ <style type="text/css">
+    tr td:nth-child(8) {
+        text-align: center;
+    }
+
+    tr td:nth-child(9) {
+        text-align: center;
+    }
+    tr td:nth-child(10) {
+        text-align: center;
+    }
+</style>
+<h2 class="align-content-center text-center company-orders-title">@OrderResx.Users</h2>
+ <h7 style="font-weight:bold; padding-left:12px">@OrderResx.SearchCriteria</h7>
+<div class="d-flex flex-row overflow-auto" style="padding-left:10px;padding-right:10px">
+    <form id="__AjaxAntiForgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    <div class="flex-grow-1  oot-border content-width">
+        <table id="users-table" class="table table-sm table-bordered table-striped" style="overflow-y:auto">
+            <thead class="table-header-row">
+                <tr class="text-center">
+                    <th style="max-width:150px;"> @OrderResx.UserAdminFirstName</th>
+                    <th style="max-width:150px;"> @OrderResx.UserAdminLastName</th>
+                    <th style="max-width:150px;"> @OrderResx.UserAdminEmail</th>
+                    <th> @OrderResx.Language</th>
+                    <th> @OrderResx.UserAdminRole</th>
+                    <th> @UsersResx.HeaderAccessInfo</th>
+                    <th> @UsersResx.HeaderAccessAction</th>
+                    <th> @UsersResx.HeaderEdit</th>
+                    <th> @OrderResx.UsersAdminDeleteUser</th>                     
+                </tr>
+                <tr id='UsersAdminFilter'>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @OrderResx.UserAdminFirstName + '"></th>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @OrderResx.UserAdminLastName + '"></th>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @OrderResx.UserAdminEmail + '"></th>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @OrderResx.Language + '"></th>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @OrderResx.UserAdminRole + '"></th>
+                    <th><input type="text" style="width:100%" autocomplete='off' id="' + @UsersResx.HeaderAccessInfo + '"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-body-normal"></tbody>
+        </table>
+          @if (Context.IsInCustomRole(Core.Enums.UserRoles.Admin)) {
+                <button onclick="location.href='/userManagement/CreateUser/@environment'" title="Create User" class='oot-button smallbtnicon' style="margin-left: 20px;"><i class="fa-sharp fa-solid fa-square-plus"></i></button>
+          }         
+        </div>
+    <div>
+        <div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@OrderResx.Userdeletionconfirmation</h5>
+                <button type="button" class="close" data-dismiss="modal">&#x2715;</button>
+            </div>
+            <div class="modal-body" id="delete-user-modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delete-user-button" class="delete-button">@OrderResx.UsersAdminYes</button>
+                <button type="button" class="dt-button buttons-excel buttons-html5 no-delete-button" data-dismiss="modal">@OrderResx.UsersAdminNo</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(function () {
+            hideLoadingSpinner();
+            $('#environments').val('@environment');
+            loadUserAdminTable("/userManagement/GetUsersAdmin");                     
+        });
+        function hideModal(modalId) {
+            $(modalId).removeClass("in");
+            $(".modal-backdrop").remove();
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '');
+            $(modalId).hide();
+        }
+        function SearchUserCompanies(data, username) {
+             $("#user-companies-table").DataTable().destroy();
+             $('#company-username-span').html(username);
+             var datatable = $("#user-companies-table").DataTable({
+                 searching: false,
+                 paging: false,
+                 processing: false,
+                 "bInfo": false,
+                 columns: [
+                        { data: 'companyId' },
+                        { data: 'companyName' },
+                  ]
+             });
+             datatable.clear().draw();
+             datatable.rows.add(data).draw();
+        }
+        function SearchUserBaans(data, username) {
+             $("#user-baans-table").DataTable().destroy();
+             $('#baan-username-span').html(username);
+             var datatable = $("#user-baans-table").DataTable({
+                    searching: false,
+                    paging: false,
+                    processing: false,
+                    "bInfo": false,
+                    columns: [
+                        { data: 'baan' },
+                        { data: 'hasFullAccess' },
+                    ]
+              });
+              datatable.clear().draw();
+              datatable.rows.add(data).draw();
+         }
+         $('#delete-user-button').on('click', function () {
+                var userName = $('#delete-user-button').attr("data-email");
+                $.ajax('@Url.Action("DeleteUser", "userManagement")' + '?email=' + encodeURIComponent(userName)).then(function (result) {
+                     hideModal('#deleteUserModal');
+                     loadUserAdminTable("/userManagement/GetUsersAdmin");
+                })
+         });
+         function DeleteUser(firstName,lastName,userName) {
+             var message='@OrderResx.Areyousureyouwanttodeleteuser' + ' ' + firstName + ' ' + lastName + ' ' + userName + '?';
+             toastr.success("<br /><button type='button' value='yes' id='confirmationButtonYes' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>Yes</button>&nbsp;&nbsp;<button type='button' value='no' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>No</button>", message, {
+                closeButton: false,
+                allowHtml: true,
+                onShown: function (toast) {
+                $("#confirmationButtonYes").click(function(){
+                 showLoadingSpinner();
+                 $.ajax('@Url.Action("DeleteUser", "userManagement")' + '?email=' + encodeURIComponent(userName)).then(function (result) {
+                    loadUserAdminTable("/userManagement/GetUsersAdmin");
+                    hideLoadingSpinner();
+                 });
+               });
+              }
+           });
+         }
+         function ChangeUsername(e){
+                toastr.clear();
+                var oldUsername = e.currentTarget.dataset.oldusername;
+                var newUsername = e.currentTarget.value;
+                var UsernameData = e.currentTarget;
+                $.ajax('@Url.Action("EditUsername","userManagement")'+'?oldusername=' + oldUsername +'&newusername='+newUsername).then(function (result){
+                    if(result) {
+                        //alert("@OrderResx.Usernamechangedsuccessfully");
+                        toastr.success("@OrderResx.Usernamechangedsuccessfully","");
+                    }
+                    else {
+                        UsernameData.value = oldUsername;
+                        toastr.warning("@OrderResx.Usernamealreadyexist","");
+                        //alert("@OrderResx.Usernamealreadyexist");
+                    }
+                })                            
+         }
+         $('#users-table tbody').on('click', 'tr', function () {
+                var data = $('#users-table').DataTable().row(this).data();
+                if (data.firstName == null) {
+                    data.firstName = '-';
+                }
+                if (data.lastName == null) {
+                    data.lastName = '-';
+                }
+                if (data.userName == null) {
+                    data.userName = '-';
+                }
+                $('#deleteUserModal .modal-footer button').attr("data-email", data.userName);
+                $('#deleteUserModal .modal-body').text('@OrderResx.Areyousureyouwanttodeleteuser' + ' ' + data.firstName + ' ' + data.lastName + ' ' + data.userName + '?');
+                SearchUserCompanies(data.userCompanies, data.userName);
+                SearchUserBaans(data.userBaans, data.userName);
+          });
+          GetAntiForgeryToken = function () {
+                return $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+          };
+          function loadUserAdminTable(e) {
+                $('#users-table').DataTable({
+                    language: {
+                        search: '<div class="pl-2"><small>@OrderResx.SearchText</small></div>',
+                        searchPlaceholder: "@OrderResx.TypeAnything",
+                        lengthMenu: "<div><small>@OrderResx.Showentries</small></div> _MENU_"
+                    },
+                    dom: "<'buttons-top'<'pull-left d-flex'<'mr-2'f><l>><'excel'B>>rt<'bottom'ip>",
+                    destroy: true,
+                    processing: true,
+                    ordering : false,
+                    paging: true,
+                    "fnInitComplete": function () {
+                      this.api().columns().every(function () {
+                            var that = this;
+                            $('input', this.header()).on('keyup change clear', function () {
+                                if (that.search() !== this.value) {
+                                    that.search(this.value,false,false).draw();
+                                }
+                            });
+                        });
+                    },
+                    buttons: [
+                    ],
+                    pagingType: "full_numbers",
+                    searching: true,
+                    ajax: e ? e : "GetUsersAdmin",
+                    "columnDefs": [
+                        { "className": "UsersAdminFilter-dt-left", "targets": "_all" }
+                    ],
+                    columns: [
+                        { data: "firstName" },
+                        { data: "lastName" },
+                        { data: "userName"},                       
+                        {
+                            data: "language", render: function (data, type, row) {
+                                let language = '@OrderResx.nalabel';
+
+                                switch (data) {
+                                    @foreach (Language role in Enum.GetValues(typeof(Core.Enums.Language)))
+                                    {
+                                        <text>
+                                            case @Html.Raw((int)role):
+                                                language = '@role.ToString()';
+                                                break;
+                                        </text>
+                                    }
+                                }
+                                return language;
+                            }
+                        },
+                        {
+                            data: "role", render: function (data, type, row) {
+                                let roleName = '@OrderResx.nalabel';
+
+                                switch (data) {
+                                    @foreach (UserRoles role in Enum.GetValues(typeof(UserRoles)))
+                                    {
+                                        <text>
+                                            case @Html.Raw((int)role):
+                                                roleName = '@role.ToString()';
+                                                break;
+                                        </text>
+                                    }
+                                }
+                                return roleName;
+                            }
+                        },
+                        {
+                            data: "isAccessForbidden", render: function (data, type, row) {
+                                 let tdValue = '';
+                                 if (data) {
+                                     tdValue = '@Html.Raw(UsersResx.StatusForbidden)';
+                                 }
+                                 else {
+                                     tdValue = '@Html.Raw(UsersResx.StatusAllowed)';
+                                 }
+                                 return tdValue;
+                            }
+                        },
+                        {
+                            data: "isAccessForbidden", render: function (data, type, row) {
+                                let tdValue = '<button id="allowUserAccess' + row['id'] + '" onclick="allowUserAccess(' + row['id'] + ')" class="oot-button' + (data ? '' : ' d-none') + '">@Html.Raw(UsersResx.ButtonActionAllow)</button>' +
+                                    '<button id="forbidUserAccess' + row['id'] + '" onclick="forbidUserAccess(' + row['id'] + ')" class="oot-button oot-button-gray' + (data ? ' d-none' : '') + '">@Html.Raw(UsersResx.ButtonActionForbid)</button>';
+                                return tdValue;
+                            }
+                        },
+                        {                            
+                            data: null, render: function (data, type, row) {
+                                var edit = "@Convert.ToBoolean(ViewBag.environment[0].Edit)";
+                                if(edit=="@OrderResx.True") {
+                                    return '<button class="oot-button smallbtnicon" title="Edit User" onclick="location.href=' + '\'/userManagement/Edit/@environment?username=' + encodeURIComponent(row.userName) + '\';"><i class="fa-solid fa-pen"></i></a>';
+                                }
+                                else {
+                                    return '<button disabled class="oot-button smallbtnicon oot-button-gray" title="Edit User" onclick="location.href=' + '\'/userManagement/Edit/@environment?username=' + encodeURIComponent(row.userName) + '\';" disabled><i class="fa-solid fa-pen"></i></a>';
+                                }                                                                             
+                            }                                                     
+                        },
+                        {
+                            data: null, render: function (data, type, row) {
+                                 var dt = "@Convert.ToBoolean(ViewBag.environment[0].Delete)";
+                                 if(dt== "@OrderResx.True") { 
+                                    //return '<button class="oot-button smallbtnicon" data-toggle="modal" data-target="#deleteUserModal"><i class="fa-solid fa-trash"></i></a>';
+                                     return '<button class="oot-button smallbtnicon" title="Delete User" onclick="return DeleteUser(\'' + row.firstName + '\',\'' + row.lastName + '\',\'' + row.userName + '\')"><i class="fa-solid fa-trash"></i></a>';
+                                 }
+                                 else {
+                                    //return '<button disabled class="oot-button smallbtnicon oot-button-gray" data-toggle="modal" data-target="#deleteUserModal" disabled><i class="fa-solid fa-trash"></i></a>';
+                                    return '<button disabled class="oot-button smallbtnicon oot-button-gray" title="Delete User" disabled onclick="return DeleteUser(\'' + row.firstName + '\',\'' + row.lastName + '\',\'' + row.userName + '\')"><i class="fa-solid fa-trash"></i></a>';
+                                 }                               
+                            }
+                        },
+                    ]
+                });
+        }
+        function allowUserAccess(userId) {
+            toggleUserAccess(userId, false);
+        }
+        function forbidUserAccess(userId) {
+            toggleUserAccess(userId, true);
+        }
+        function toggleUserAccess(userId, isForbidAccess) {
+            toastr.clear();
+            var form = $('#__AjaxAntiForgeryForm');
+            var token = $('input[name="__RequestVerificationToken"]', form).val();
+            let url = '@(new Uri(Context.Request.GetDisplayUrl()).GetLeftPart(UriPartial.Authority))/UserManagement/ToggleUserIsForbiddenAccess';
+            let requestData = 'UserId=' + userId + '&IsActionForbidAccess=' + isForbidAccess + '&__RequestVerificationToken=' + token;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: requestData,
+                success: function (responseContent, result, response) {
+                         if (isForbidAccess) {
+                            $('#allowUserAccess' + userId).removeClass('d-none');
+                            $('#forbidUserAccess' + userId).addClass('d-none');
+                         }
+                         else {
+                            $('#allowUserAccess' + userId).addClass('d-none');
+                            $('#forbidUserAccess' + userId).removeClass('d-none');
+                         }
+                },
+                error: function (responseContent, result, response) {
+                    //alert('@OrderResx.Unexpectederror');
+                    toastr.warning("@OrderResx.Unexpectederror","");
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,297 @@
+﻿@model ArasPLMWebAp.Models.UserEdition
+
+@using Core.Services
+@using Core.Enums
+@using ProcessorWebApp.Resources
+@{
+
+}
+
+<div class="user-reg">
+    <div><h4 class="head">@OrderResx.EditUser</h4></div>
+    <form asp-action="Edit" id="editForm" class="personal-page-form ng-invalid ng-dirty ng-touched" onsubmit="return validate_form()">
+        @Html.AntiForgeryToken()
+        @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
+        <div class="d-flex form-group align-items-center m-2">
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.OldUserName)
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @readonly = "readonly",@class = "form-control", @autocomplete="off" } })
+        </div>
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(m => m.Language, Html.GetEnumSelectList(typeof(Core.Enums.Language)).Prepend(new SelectListItem { Text = @OrderResx.Selectlabel, Disabled = true, Selected = true }),
+            new
+            {
+            @class = "form-control",
+            onchange = "onRoleChange(this)"
+            })
+        </div>
+        <div class="col-md-2 align-items-center m-2" style="display:none">
+            @Html.LabelFor(model => model.GenericID, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.GenericID, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control", @id = "username", @autocomplete="off" } })
+        </div>
+        @if (Context.IsInCustomRole(Core.Enums.UserRoles.Admin))
+        {
+            <div class="d-flex align-items-center m-2">
+                @Html.LabelFor(model => model.UserRole, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.UserRole, Html.GetEnumSelectList(typeof(Core.Enums.UserRoles)).Prepend(new SelectListItem { Text = @OrderResx.Selectlabel, Disabled = true, Selected = true }),
+            new
+            {
+            @class = "form-control",
+            onchange = "onRoleChange(this)"
+            })
+            </div>
+        }
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Comment, new { @class = "my-coment form-control", @autocomplete="off" })
+        </div>
+        <br><br>
+
+        <div class="d-flex justify-content-center">
+            <button class="oot-button m-4" id="reset-button" type="button">@OrderResx.Refresh</button>
+            <button class="oot-button m-4" id="submit-button" type="button">@OrderResx.Save</button>
+        </div>
+        @if (AppAuthenticationHelper.IsJWTSignInProvider(Context.User))
+        {
+            <div class="d-flex align-items-center m-2">
+                @Html.Partial("_EditPassword", new ArasPLMWebAp.Models.EditPasswordModel { UserName = Model.UserName, Password = Model.Password })
+            </div>
+        }
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(function () {
+            document.getElementById('FirstName').focus();
+            var selectobject = document.getElementById("UserRole");
+            for (var i = 0; i < selectobject.length; i++) {
+                if (selectobject.options[i].value == '0') {
+                    selectobject.remove(i);
+                }
+            }
+            hideLoadingSpinner();
+        });   
+        $('#reset-button').on('click', function () {
+            window.location.reload();
+        });
+        var config = {
+            '.chosen-select-width': { width: "75%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        $(document).ready(function () {
+            PushSelectedItems("#companies-dropdown :selected", $("#companies-dropdown"), $("#SelectedCompaniesid"), $("#SelectedCompaniesName"));
+            PushSelectedItems("#customer-companies-dropdown :selected", $("#customer-companies-dropdown"), $("#SelectedCustomersid"), $("#SelectedCustomersName"));
+            $('.baan-has-full-access-checkbox').on('change', GiveFullAccessToBaan);
+            $('.baan-has-access-checkbox').on('change', GiveAccessToBaan);
+        });
+        function PushSelectedItems(dropdownItemSelectedStr, dropdownItem, HiddenId, HiddenName) {
+            let a = [];
+            let b = [];
+            $.each($(dropdownItemSelectedStr), function () {
+                a.push($(this).val());
+                b.push($(this).text());
+            });
+            b.join(",")
+            $(HiddenId).val(a);
+            $(HiddenName).val(b);
+            $(dropdownItem).change(function () {
+                let a = [];
+                let b = [];
+                $.each($(dropdownItemSelectedStr), function () {
+                    a.push($(this).val());
+                    b.push($(this).text());
+                });
+                b.join(",")
+                $(HiddenId).val(a);
+                $(HiddenName).val(b);
+            });
+        }
+        function validate_form() {
+            toastr.clear();
+            valid = true;
+            if (document.getElementById('FirstName').value == "") {
+                //alert("@OrderResx.EnterFirstName");
+                toastr.warning("@OrderResx.EnterFirstName","");
+                document.getElementById('FirstName').focus();
+                valid = false;
+            }
+            else {
+                if (document.getElementById('LastName').value == "") {
+                    //alert("@OrderResx.EnterLastName");
+                    toastr.warning("@OrderResx.EnterLastName", "");
+                    document.getElementById('LastName').focus();
+                    valid = false;
+                }
+                else {
+                    if (document.getElementById('UserEmail').value == "") {
+                        //alert("@OrderResx.EnterUserEmail");
+                        toastr.warning("@OrderResx.EnterUserEmail", "");
+                        document.getElementById('UserEmail').focus();
+                        valid = false;
+                    }
+                    else {
+                        if (document.getElementById('UserRole').value == "" || document.getElementById('UserRole').value == "@OrderResx.Selectlabel") {
+                            //alert("@OrderResx.EnterUserRole");
+                            toastr.warning("@OrderResx.EnterUserRole", "");
+                            document.getElementById('UserRole').focus();
+                            valid = false;
+                        }
+                        else {
+                            if (document.getElementById('Language').value == "" || document.getElementById('Language').value == "@OrderResx.Selectlabel") {
+                                //alert("@OrderResx.EnterUserLanguage");
+                                toastr.warning("@OrderResx.EnterUserLanguage", "");
+                                document.getElementById('Language').focus();
+                                valid = false;
+                            }
+                       }
+                    }
+                }
+            }
+            return valid;
+        }
+        function SavePasswordOnClick(username) {
+            toastr.clear();
+            var password = $("#password").val();
+            var confirmPassword = $("#approve-password").val();
+            if (password != confirmPassword) {
+                //alert("@OrderResx.Passwordsdonotmatch");
+                toastr.warning("@OrderResx.Passwordsdonotmatch","");
+                $('#password').css("box-shadow", "0 0 5px 5px #FF0000");
+                $('#approve-password').css("box-shadow", "0 0 5px 5px #FF0000");
+            }
+            else {
+                $.ajax('@Url.Action("SavePassword", "usermanagement")' + '?username=' + username + "&password=" + password)
+                    .then(function (result) {
+                        hideLoadingSpinner();
+                        //alert("@OrderResx.Passwordsaved");
+                        toastr.success("@OrderResx.Passwordsaved", "");
+                });
+            }
+        }
+        $('#submit-button').on('click', function () {
+            toastr.clear();
+            if ('@Model.OldUserName' != $('#username').val()) {
+                $.ajax('@Url.Action("CheckForaccessibilityToEditUserName","userManagement")' + '?newusername=' + $('#username').val()).then(function (result) {
+                    if (result) {
+                        $("#editForm").submit();
+                    }
+                    else {
+                        //alert("@OrderResx.Usernamealreadyexist");
+                        toastr.warning("@OrderResx.Usernamealreadyexist","");
+                    }
+                })
+            }
+            else {
+                $("#editForm").submit();
+            }
+        });
+        $('#UserBaans_All__HasAccess').on('change', function () {
+            if ($(this).is(":checked")) {
+                $('[id ^=UserBaans_][id $=__HasAccess]').prop("checked", true);
+                if (!$('[class ^= company-from-baan-]').hasClass("result-selected")) {
+                    $('[class ^= company-from-baan-]').addClass("active-result");
+                    $('[class ^= company-from-baan-]').css('display', 'block');
+                    $('[class ^= company-from-baan-]').prop("disabled", false);
+                }
+            }
+        });
+        $('#UserBaans_All__HasFullAccess').on('change', function () {
+            if ($(this).is(":checked")) {
+                $('[id ^=UserBaans_]').prop("checked", true);
+                $('[class ^= company-from-baan-]').css('display', 'none');
+            }
+        });
+        $('#UserEmail').on('change', function () {
+            if ($('#unable-username').is(":checked")) {
+                $('#username').val($('#UserEmail').val());
+            }
+            else {
+                $('#username').val($('#OldUserName').val());
+            }
+        });
+        $('#unable-username').on('change', function () {
+            if ($('#unable-username').is(":checked")) {
+                $('#username').val($('#UserEmail').val());
+            }
+            else {
+                $('#username').val($('#OldUserName').val());
+            }
+        });
+        function GiveAccessToBaan() {
+            if ($(this).is(":disabled")) {
+                return;
+            }
+            var baan = $(this).data('baan');
+            if ($(".baan-has-access-" + baan).is(":checked")) {
+                $('.company-from-baan-' + baan).removeClass("result-selected");
+                $(".baan-has-access-" + baan).addClass("wasChecked");
+                $('.company-from-baan-' + baan).css('display', 'block');
+            }
+            else {
+                $('.company-from-baan-' + baan).prop("selected", false);
+                $('.company-from-baan-' + baan).removeClass("result-selected");
+                $(".baan-has-access-" + baan).removeClass("wasChecked");
+                $('.baan-has-full-access-' + baan).prop("checked", false);
+                $('.company-from-baan-' + baan).css('display', "none");
+                if (!$(this).hasClass("baan-has-access-all")) {
+                    $('#UserBaans_All__HasAccess').prop("checked", false);
+                }
+                if (!$(this).hasClass("baan-has-full-access-all")) {
+                    $('#UserBaans_All__HasFullAccess').prop("checked", false);
+                }
+            }
+            $('.company-from-baan-' + baan).prop("disabled", !$('.baan-has-access-' + baan).is(":checked"));
+            $('#companies-dropdown').trigger("chosen:updated");
+            $('#customer-companies-dropdown').trigger("chosen:updated");
+        }
+        function GiveFullAccessToBaan() {
+            if ($(this).is(":disabled")) {
+                return;
+            }
+            var baan = $(this).data('baan');
+            if ($(".baan-has-full-access-" + baan).is(":checked")) {
+                $('.company-from-baan-' + baan).css('display', 'none');
+                $(".baan-has-access-" + baan).prop("checked", true);
+            }
+            else {
+                if (!$(".baan-has-access-" + baan).hasClass("wasChecked")) {
+                    $(".baan-has-access-" + baan).prop("checked", false);
+                }
+                $('.company-from-baan-' + baan).removeAttr("selected", "selected");
+                $('.company-from-baan-' + baan).css('display', 'block');
+                if (!$(this).hasClass("baan-has-full-access-all")) {
+                    $('#UserBaans_All__HasFullAccess').prop("checked", false);
+                }
+            }
+            $('#companies-dropdown').trigger("chosen:updated");
+            $('#customer-companies-dropdown').trigger("chosen:updated");
+        }
+        function onRoleChange(rolesDropDownList) {
+            if (rolesDropDownList.value == @((int)UserRoles.Admin)) {
+                $('#non-admin-content').addClass('d-none');
+            }
+            else {
+                $('#non-admin-content').removeClass('d-none');
+            }
+        }
+    </script>
+}

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registration Complete";
+}
+<div class="text-center pt-5">
+    <h1 class="mb-5">You don't have the access for this Application</h1>
+    <label>In order to get access, please contact Administrator</label>
+    <br />
+    <br />
+   @* <a class="oot-button" href="/UsersRegistration/Index">Register</a>*@
+</div>
+@section Scripts
+{
+    <script>
+        $(function () {
+
+            if (hideLoadingSpinner) {
+                hideLoadingSpinner();
+            }       
+        })
+    </script>
+}

@@ -1,0 +1,200 @@
+﻿@using ProcessorWebApp.Resources
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Http;
+@using Core.Services;
+@using System.Web;
+@using Core.Enums
+@{
+    var environment = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr] as string;
+}
+<style type="text/css">
+     iframe {
+    border: 1px solid black;
+    width: 100%;
+}
+    tr td:nth-child(8) {
+        text-align: center;
+    }
+
+    tr td:nth-child(9) {
+        text-align: center;
+    }
+    tr td:nth-child(10) {
+        text-align: center;
+    }
+</style>
+<h2 class="align-content-center text-center company-orders-title">@OrderResx.RunControlPageTitle</h2>
+<div class="d-flex flex-row overflow-auto" style="padding-left:10px;padding-right:10px">
+    <form id="__AjaxAntiForgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    <div class="flex-grow-1  oot-border content-width">
+        <table id="users-table" class="table table-sm table-bordered table-striped">
+            <thead class="table-header-row">
+                <tr class="text-center">
+                    <th style="width:80px"> @OrderResx.RunId</th>
+                    <th> @OrderResx.ProcessGroupID</th>
+                    <th> @OrderResx.ProcessIdTitle</th>
+                    <th> @OrderResx.Status</th>
+                    <th> @OrderResx.ServerID</th>
+                    <th> @OrderResx.Rundttmtitle</th>
+                    <th> @OrderResx.Runbytitle</th>
+                    <th style="width:80px"> @OrderResx.EditBatch</th>
+                    <th style="width:80px"> @OrderResx.DeleteBatch</th>
+                </tr>
+                <tr id='ProcessFilter'>
+                    <th><input type="text" class="searchbox-half-input-thead" autocomplete="off" id="@OrderResx.RunId"></th>
+                    <th><input type="text" class="searchbox-half-input-thead" autocomplete="off" id="@OrderResx.ProcessGroupID"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ProcessIdTitle"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Status"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.ServerID"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Rundttmtitle"></th>
+                    <th><input type="text" class="searchbox-input-thead" autocomplete="off" id="@OrderResx.Runbytitle"></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-body-normal"></tbody>
+        </table>
+        @if (Context.Session.GetString("UserRole")==OrderResx.Admin)
+        {
+            <button onclick="location.href='/Processor/CreateRunControlPage/@environment'" title="Create Run Control Page" class='oot-button smallbtnicon' style="margin-left: 20px;"><i class="fa-sharp fa-solid fa-square-plus"></i></button>
+        }
+        else {
+            <button onclick="location.href='/Processor/CreateRunControlPage/@environment'" title="Create Run Control Page" class='oot-button smallbtnicon oot-button-gray' disabled='disabled' style="margin-left: 20px;"><i class="fa-sharp fa-solid fa-square-plus"></i></button>
+        }
+    </div>
+    <div>
+        <div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var userrole="";
+        $(function () {
+            hideLoadingSpinner();
+            userrole = '@Context.Session.GetString("UserRole")';
+            $('#environments').val('@environment');
+            loadRunControlPageTable("/api/Processor/GetRunControlPageData");
+        });       
+        GetAntiForgeryToken = function () {
+                return $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+        };
+        function loadRunControlPageTable(e) {
+            var index = 0;
+            showLoadingSpinner();
+                $('#users-table').DataTable({
+                    language: {
+                        search: '<div class="pl-2"><small>@OrderResx.SearchText</small></div>',
+                        searchPlaceholder: "@OrderResx.TypeAnything",
+                        lengthMenu: "<div><small>@OrderResx.Showentries</small></div> _MENU_"
+                    },
+                    dom: "<'buttons-top'<'pull-left d-flex'<'mr-2'f><l>><'excel'B>>rt<'bottom'ip>",
+                    destroy: true,
+                    processing: true,
+                    ordering: false,
+                    paging: true,
+                   "fnInitComplete": function () {
+                    this.api().columns().every(function () {
+                        var that = this;
+                        $('input', this.header()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value,false,false).draw();
+                            }
+                        });
+                     });
+                   },
+                   buttons: [
+                   ],
+                   pagingType: "full_numbers",
+                   searching: true,
+                   lengthMenu: [
+                          [10, 25, 50, -1],
+                          [10, 25, 50, 'All'],
+                   ],
+                   ajax: e ? e : "GetRunControlPageData",
+                   "columnDefs": [
+                        { "className": "UsersAdminFilter-dt-left", "targets": "_all" },
+                   ],
+                   columns: [
+                    { data: "runid" },
+                    { data: "processgroupid" },
+                    { data: "processid" },
+                    { data: "status" },
+                    { data: "serverid" },
+                    {
+                        data: "rundttm", render: function (data, type, row) {
+                            if (row.createddate == "@OrderResx.datelabel") {
+                                return "";
+                            }
+                            else {
+                                return "<label id='lblCreatedDate' style='width:150px;'>" + row.rundttm + "</label>";
+                            }
+                        }
+                    },
+                    { data: "runby" },
+                    {
+                        data: null, render: function (data, type, row) {
+                            if (userrole == "@OrderResx.Admin") {
+                                return '<button class="oot-button smallbtnicon" title="Edit Run Control Page" onclick="return EditRunControlPage_Click(' + row.runid + ')"><i class="fa-solid fa-pen"></i></a>';
+                            }
+                            else {
+                                return '<button class="oot-button smallbtnicon oot-button-gray" title="Edit Run Control Page" style="background-color: #dcddde" onclick="return EditRunControlPage_Click(' + row.runid + ')" disabled><i class="fa-solid fa-pen"></i></a>';
+                            }
+                        }
+                    },
+                    {
+                        data: null, render: function (data, type, row) {
+                            if (userrole == "@OrderResx.Admin") {
+                                return '<button class="oot-button smallbtnicon" title="Delete Run Control Page" onclick="return DeleteRunControlPage_Click(' + row.runid + ')"><i class="fa-solid fa-trash"></i></a>';
+                            }
+                            else {
+                                return '<button class="oot-button smallbtnicon oot-button-gray" title="Delete Run Control Page" style="background-color: #dcddde" onclick="return DeleteRunControlPage_Click(' + row.runid + ')" disabled><i class="fa-solid fa-trash"></i></a>';
+                            }
+                        }
+                    }
+                ]
+            });
+            hideLoadingSpinner();
+        }
+        function EditRunControlPage_Click(Id) {
+            window.location.href = "/Processor/CreateRunControlPage?@OrderResx.Id=" + Id;
+        }
+        function DeleteRunControlPage_Click(Id) {
+            var message = "@OrderResx.Areyousurewantodeletethisrunid" + " " + Id + "?";
+            toastr.success("<br /><button type='button' value='yes' id='confirmationButtonYes' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>Yes</button>&nbsp;&nbsp;<button type='button' value='no' class='btnstyle' style='width:50px;background-color:#00a8e1;color:#fff'>No</button>", message, {
+                closeButton: false,
+                allowHtml: true,
+                onShown: function (toast) {
+                    $("#confirmationButtonYes").click(function () {
+                        toastr.clear();
+                        showLoadingSpinner();
+                        $.ajax({
+                            type: "GET",
+                            url: "/api/Processor/DeleteRunControlPage?Id=" + Id,
+                            contentType: "application/json;charset=utf-8",
+                            data: "{}",
+                            contentType: "json",
+                            async: true,
+                            success: function (response) {
+                                if (response == "@OrderResx.Success") {
+                                   loadRunControlPageTable("/api/Processor/GetRunControlPageData");
+                                   hideLoadingSpinner();
+                                }
+                                else {
+                                    toastr.clear();
+                                    hideLoadingSpinner();
+                                    toastr.warning("@OrderResx.Somethingwentwrong", "");
+                                    return false;
+                                }
+                            }
+                        });
+                        return false;
+                    });
+                }
+            });
+        }
+    </script>
+}

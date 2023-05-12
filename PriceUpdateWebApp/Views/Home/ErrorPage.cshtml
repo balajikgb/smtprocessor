@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Error Page";
+}
+<div class="text-center pt-5">
+    <h1 class="mb-5">We have found an issue with your PLM Credentials.</h1>
+    <label>In order to get resolved, please contact our Administrator</label>
+    <br />
+    <br />
+   @* <a class="oot-button" href="/UsersRegistration/Index">Register</a>*@
+</div>
+@section Scripts
+{
+    <script>
+        $(function () {
+
+            if (hideLoadingSpinner) {
+                hideLoadingSpinner();
+            }       
+        })
+    </script>
+}

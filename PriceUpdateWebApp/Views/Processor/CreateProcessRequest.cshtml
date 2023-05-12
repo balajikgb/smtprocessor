@@ -1,0 +1,440 @@
+﻿@model ArasPLMWebAp.Models.ProcessRequestClass
+
+@using Core.Services
+@using Core.Enums
+@using ProcessorWebApp.Resources;
+@using Microsoft.AspNetCore.Http;
+@{
+    var env = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr];
+}
+<style>
+    .required::after 
+{
+    content: "*";
+    font-weight: bold;
+    color: red; 
+}
+</style>
+<div class="user-reg">
+    <div><h4 class="head">@OrderResx.ProcessSchedulerRequest</h4></div>
+    <form onsubmit="return validate_form()">
+        @Html.AntiForgeryToken()
+        <br />
+         <div class="d-flex bd-highlight" style="margin-bottom: 0px;line-height: 1;">
+            <div class="d-flex form-group align-items-center m-2">
+             <label class="control-label">@OrderResx.UserIDTitle</label>
+            <label class="control-label" style="padding-left:56px">@Context.Session.GetString("FirstName")&nbsp;&nbsp;@Context.Session.GetString("LastName")</label>
+        </div>
+            <div class="d-flex form-group align-items-center m-2" style="padding-left:500px">
+                <label class="control-label">@OrderResx.RunControlId</label>
+                <label class="control-label" id="lbl_runid"></label>
+            </div>
+        </div>
+        <div class="d-flex form-group align-items-center m-2">
+            <input type="hidden" id="sid" />
+            <label class="control-label required">@OrderResx.ServerName</label>
+            <input list="serverid" style="width:fit-content;" autocomplete="off" class='form-control padding-label' id='Txt_serverid' name='Txt_serverid' onchange="return ServerChange()" multiple />
+            <datalist id="serverid">
+            </datalist>
+        </div>
+        <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label">@OrderResx.RunDate</label>
+            @Html.EditorFor(model => model.rundate, new { htmlAttributes = new { @class = "form-control",id="Txt_RunDate",@autocomplete="off",@disabled=true } })
+        </div>
+        <div class="d-flex form-group align-items-center m-2">
+            <input type="hidden" id="rid" />
+            <label class="control-label required">@OrderResx.Recurrance</label>
+            <input list="recurranceid" style="width:fit-content;" autocomplete="off" class='form-control padding-label' id='Txt_recurranceid' name='Txt_recurranceid' onchange="return RecurranceChange()" multiple />
+            <datalist id="recurranceid">
+            </datalist>
+        </div>
+         <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label">@OrderResx.RunTime</label>
+            @Html.EditorFor(model => model.runtime, new { htmlAttributes = new { @class = "form-control",id="Txt_RunTime",@autocomplete="off",@disabled=true } })
+        </div>
+         <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label">@OrderResx.Status</label>
+            <select id="status" name="status" class="form-control" style="width:150px">
+                <option value="1">@OrderResx.Active</option>
+                <option value="0">@OrderResx.InActive</option>
+            </select>
+        </div>
+         <div class="flex-grow-1  oot-border content-width">
+            <table id="users-table" class="table table-sm table-bordered table-striped">
+                <thead class="table-header-row">
+                    <tr class="text-center">
+                        <th style="text-align:left">@OrderResx.Description</th>
+                        <th style="text-align:left">@OrderResx.ProcessName</th>
+                        <th style="text-align:left">@OrderResx.Command</th>
+                        <th style="text-align:left">@OrderResx.Status</th>
+                        <th style="text-align:left">@OrderResx.CreatedDateTitle</th>
+                        <th style="text-align:left">@OrderResx.CreatedByTitle</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body-normal"></tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-left">
+        <button class="oot-button m-4" id="back-button" type="button" onclick="BtnBack_Click()">@OrderResx.Back</button>
+        <button class="oot-button m-4" type="submit" onclick="return validate_form(event)">@OrderResx.Run</button>
+        </div>
+    </form>
+       
+        <br><br>
+
+
+   
+    </div>
+
+@section Scripts
+{
+    <script>
+        var processid=0,runid=0,processrequestid=0,processgroupid=0;
+        var userrole="";
+        var server,recurrance;
+        var validate=false;
+        var rowid=0; 
+        var process;
+        $(function () {
+            $('#users-tableitem').hide();
+           var currentdate = new Date();
+           var todaydate="";
+           var currentmonth="";
+           var currentyear="";
+           todaydate = currentdate.getDate()<10?"0"+currentdate.getDate():currentdate.getDate();
+           currentmonth=currentdate.getMonth() + 1<10?"0" + (currentdate.getMonth()+1):(currentdate.getMonth()+1);
+           currentyear=currentdate.getFullYear();
+           var date = todaydate + "-" + currentmonth + "-" + currentyear;
+           GetTime();
+           userrole = '@Context.Session.GetString("UserRole")';
+            $('#Txt_Name').focus();
+            $('#environments').val('@env');
+            const params = new URLSearchParams(window.location.search)
+            for (const param of params) {
+                if(param[0]=="Id") {
+                  processid = param[1].trim();
+                }
+                if (param[0] == "ProcessGroupId") {
+                  processgroupid = param[1].trim();
+                }
+            }
+            //$('#lbl_runid').text(runid);
+            $('#Txt_RunDate').val(date);
+            if(processid!=0) {
+              GetMaxControlId(processid);
+            }
+            else{
+              GetMaxControlId(processgroupid);
+            }
+            loadProcessRequestTableByProcessId("/api/Processor/ProcessRequestTableByProcessId?ProcessId=" + processid + "&ProcessGroupId=" + processgroupid);
+        });
+        function GetMaxControlId(Id) {
+            $.ajax({
+                type: "GET",
+                url: "/api/Processor/GetMaxControlId?ProcessId=" + parseInt(processid) + "&ProcessGroupId=" + parseInt(processgroupid),
+                contentType: "application/json;charset=utf-8",
+                data: "{}",
+                contentType: "json",
+                async: false,
+                success: function (response) {
+                    $('#lbl_runid').text(response);
+                    GetServers();
+                }
+            });
+            return false;
+         }
+        function ViewProcessRequest(id){
+            $.ajax({
+                type: 'GET',
+                url: '/api/Processor/GetProcessRequestRecord?Id=' + parseInt(id),
+                data: '{}',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.data.length > 0) {
+                        processrequestid = response.data[0].processrequestid;
+                        $('#lbl_userid').val(response.data[0].username);
+                        $('#sid').val(response.data[0].servername);
+                        $('#Txt_serverid').val(response.data[0].server);
+                        $('#rid').val(response.data[0].scheduleid);
+                        $('#Txt_recurranceid').val(response.data[0].schedulename);
+                        $('#status').val(response.data[0].status);
+                        $('#Txt_RunDate').val(response.data[0].rundate);
+                        $('#Txt_RunTime').val(response.data[0].runtime);
+                        $('#Add').attr('disabled', false);
+                        $('#Add').removeClass("oot-button smallbtnicon oot-button-gray");
+                        $('#Add').addClass("oot-button smallbtnicon");
+                        $('#users-tableitem').show();
+                        validate=true;
+                        loadProcessRequestTableByRequestId("/api/Processor/ProcessRequestbyProcessRequestId?Id=" + processrequestid);
+                    }
+                    else {
+                       $('#Add').attr('disabled', true);
+                       $('#Add').removeClass("oot-button smallbtnicon");
+                       $('#Add').addClass("oot-button smallbtnicon oot-button-gray");
+                       $('#users-tableitem').hide();
+                    }
+                    hideLoadingSpinner();
+                }
+            });
+            return false;
+        }
+        function GetTime() {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds=date.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            hours=hours<10?'0'+hours : hours;
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            seconds= seconds<10 ? "0"+seconds : seconds;
+            var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            $('#Txt_RunTime').val(strTime);
+        }
+        function GetServers() {
+            $.ajax({
+                type: "GET",
+                url: "/api/Processor/GetServersDataActive",
+                contentType: "application/json;charset=utf-8",
+                data: "{}",
+                contentType: "json",
+                async: false,
+                success: function (response) {
+                    $('#serverid').children().remove();
+                    if (response.data[0] != null) {
+                        server = response.data;
+                        for (var i = 0; i < response.data.length; i++) {
+                            $('#serverid').append("<option value='" + response.data[i].servernames.split('-')[1] + "'></option>");
+                        }
+                    }
+                    GetSchedulers();
+                }
+            });
+            return false;
+        }
+        function GetSchedulers() {
+            $.ajax({
+                type: "GET",
+                url: "/api/Processor/GetSchedulersDataActive",
+                contentType: "application/json;charset=utf-8",
+                data: "{}",
+                contentType: "json",
+                async: false,
+                success: function (response) {
+                    $('#recurranceid').children().remove();
+                    if (response.data[0] != null) {
+                        recurrance = response.data;
+                        for (var i = 0; i < response.data.length; i++) {
+                            $('#recurranceid').append("<option value='" + response.data[i].schedulename.split('-')[1] + "'></option>");
+                        }
+                    }
+                   //ViewProcessRequest(processid);
+                }
+            });
+            return false;
+        }
+        function ServerChange() {
+            var valuecheck = false;
+            if ($('#Txt_serverid').val() != "") {
+                $.each(server, function (key, value) {
+                    if (value.servernames.split('-')[1] == $.trim($('#Txt_serverid').val())) {
+                        $('#sid').val(value.servernames.split('-')[0]);
+                        valuecheck = true;
+                    }
+                });
+                if (valuecheck == false) {
+                    toastr.warning("@OrderResx.servernamenotexist");
+                    $('#Txt_serverid').val("");
+                    $('#sid').val("");
+                    $('#Txt_serverid').focus();
+                    return false;
+                }
+            }
+            else {
+                toastr.warning("@OrderResx.EnterServerName");
+                $('#Txt_serverid').val("");
+                $('#sid').val("");
+                $('#Txt_serverid').focus();
+                return false;
+            }
+        }
+        function RecurranceChange() {
+            var valuecheck = false;
+            if ($('#Txt_recurranceid').val() != "") {
+                $.each(recurrance, function (key, value) {
+                    if (value.schedulename.split('-')[1] == $.trim($('#Txt_recurranceid').val())) {
+                        $('#rid').val(value.schedulename.split('-')[0]);
+                        valuecheck = true;
+                    }
+                });
+                if (valuecheck == false) {
+                    toastr.warning("@OrderResx.RecurranceNameNotExist");
+                    $('#Txt_recurranceid').val("");
+                    $('#rid').val("");
+                    $('#Txt_recurranceid').focus();
+                    return false;
+                }
+            }
+            else {
+                toastr.warning("@OrderResx.EnterRecurranceName");
+                $('#Txt_recurranceid').val("");
+                $('#rid').val("");
+                $('#Txt_recurranceid').focus();
+                return false;
+            }
+        }
+        $('#reset-button').on('click', function () {
+            window.location.reload();
+        });             
+        var config = {
+            '.chosen-select-width': { width: "75%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        function validate_form (e) {
+            e.preventDefault();
+            toastr.clear();
+            valid = true;
+            if ($('#Txt_serverid').val() == "") {
+                toastr.success("@OrderResx.EnterServerName","");
+                $('#Txt_Name').focus();
+                valid = false;
+                return false;
+            }
+             if ($('#Txt_recurranceid').val() == "") {
+                toastr.success("@OrderResx.EnterRecurranceName","");
+                $('#Txt_recurranceid').focus();
+                valid = false;
+                return false;
+            }
+            SaveProcessRequest();
+        }
+        function SaveProcessRequest() {
+            toastr.clear();
+            var userid='@Context.Session.GetString("UserId")';
+            var username = '@Context.Session.GetString("FirstName")' + ' ' + '@Context.Session.GetString("LastName")';
+            var currentdate = new Date();
+            var datetime = currentdate.getFullYear() + "-"
+                + (currentdate.getMonth() + 1) + "-"
+                + currentdate.getDate() + " "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds() + "."
+                + currentdate.getMilliseconds();
+            var model = [];
+            var data = {};
+            data.processrequestid=processrequestid;
+            data.userid = parseInt(userid);
+            data.processid=parseInt(processid);
+            data.processgroupid=parseInt(processgroupid);
+            data.runcontrolid=parseInt($('#lbl_runid').text());
+            data.scheduleid = parseInt($('#rid').val());
+            data.servername =parseInt($('#sid').val());
+            data.status = $.trim($('#status').val());
+            data.rundate=$('#Txt_RunDate').val();
+            data.runtime=$('#Txt_RunTime').val();
+            data.createdby = username;
+            data.createddate=datetime;
+            model.push(data);
+            var processrequest = JSON.stringify(model);
+            $.ajax({
+                type: 'POST',
+                url: '/api/Processor/SaveProcessRequest',
+                data: processrequest,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0].result == "@OrderResx.Success") {
+                        if(processid!=0) {
+                          window.location = "/Processor/Process";
+                        }
+                        else {
+                          window.location = "/Processor/ProcessGroup";
+                        }
+                    }
+                    else if (response[0].result == "@OrderResx.AlreadyExisting") {
+                        hideLoadingSpinner();
+                        toastr.warning("@OrderResx.AlreadyExistingPriceGroupName", "");
+                        return false;
+                    }
+                    else {
+                        hideLoadingSpinner();
+                        toastr.warning("@OrderResx.Somethingwentwrong","");
+                        return false;
+                    }
+                },
+                error: function (response) {
+                    toastr.warning("@OrderResx.erroroccured", "");
+                }
+            });
+            return false;
+        }
+        function loadProcessRequestTableByProcessId(e) {
+            var index = 0;
+            showLoadingSpinner();
+            $('#users-table').DataTable({
+                language: {
+                    search: '<div class="pl-2"><small>@OrderResx.SearchText</small></div>',
+                    searchPlaceholder: "@OrderResx.TypeAnything",
+                    lengthMenu: "<div><small>@OrderResx.Showentries</small></div> _MENU_"
+                },
+                dom: "<'buttons-top'<'pull-left d-flex'<'mr-2'f><l>><'excel'B>>rt<'bottom'ip>",
+                destroy: true,
+                processing: true,
+                ordering: false,
+                paging: false,
+                "fnInitComplete": function () {
+                    this.api().columns().every(function () {
+                        var that = this;
+                        $('input', this.header()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value, false, false).draw();
+                            }
+                        });
+                    });
+                },
+                buttons: [
+                ],
+                //pagingType: "full_numbers",
+                searching: false,
+                //lengthMenu: [
+                //    [10, 25, 50, -1],
+                //    [10, 25, 50, 'All'],
+                //],
+                ajax: e ? e : "ProcessRequestTableByProcessId",
+                "columnDefs": [
+                    { "className": "UsersAdminFilter-dt-left", "targets": "_all" },
+                ],
+                columns: [
+                    { data: "description" },
+                    { data: "name" },                 
+                    { data: "command" },
+                    { data: "status" },
+                    {
+                        data: "createddate", render: function (data, type, row) {
+                            if (row.createddate == "@OrderResx.datelabel") {
+                                return "";
+                            }
+                            else {
+                                return "<label id='lblCreatedDate' style='width:150px;'>" + row.createddate + "</label>";
+                            }
+                        }
+                    },
+                    { data: "createdby" }     
+                ]
+            });
+            hideLoadingSpinner();
+        }
+        function BtnBack_Click() {
+           if(processid!=0) {
+             window.location = "/Processor/Process";
+           }
+           else {
+             window.location = "/Processor/ProcessGroup";
+           }
+        }
+    </script>
+}

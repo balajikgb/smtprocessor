@@ -1,0 +1,178 @@
+﻿@model ArasPLMWebAp.Models.CreateProcessClass
+
+@using Core.Services
+@using Core.Enums
+@using ProcessorWebApp.Resources;
+@using Microsoft.AspNetCore.Http;
+@{
+    var env = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr];
+}
+<style>
+    .required::after 
+{
+    content: "*";
+    font-weight: bold;
+    color: red; 
+}
+</style>
+<div class="user-reg">
+    <div><h4 class="head"></h4></div>
+    <form onsubmit="return validate_form()">
+        @Html.AntiForgeryToken()
+        <br />
+
+         <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label required">@OrderResx.Name</label>
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control",id="Txt_Name",@autocomplete="off" } })
+        </div>
+
+        <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label">@OrderResx.Description</label>
+            @Html.TextAreaFor(model => model.description, new { @class = "my-coment form-control",id="Txt_Description",style="height:100px", @autocomplete = "off" })
+        </div>
+
+        <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label required">@OrderResx.Command</label>
+            @Html.TextAreaFor(model => model.command, new { @class = "my-coment form-control",id="Txt_Command",style="height:100px", @autocomplete = "off" })
+        </div>
+
+        <div class="d-flex form-group align-items-center m-2">
+            <label class="control-label">@OrderResx.Status</label>
+            <select id="status" name="status" class="form-control" style="width:150px">
+                <option value="1">@OrderResx.Active</option>
+                <option value="0">@OrderResx.InActive</option>
+            </select>
+        </div>
+
+    </form>
+       
+        <br><br>
+
+
+    <div class="d-flex justify-content-left">
+        <button class="oot-button m-4" id="back-button" type="button" onclick="BtnBack_Click()">@OrderResx.Back</button>
+        <button class="oot-button m-4" type="submit" onclick="return validate_form()">@OrderResx.Ok</button>
+    </div>
+   
+        </div>
+
+@section Scripts
+{
+    <script>
+        var id=0;
+        $(function () {
+            $('#Txt_Name').focus();
+            $('#environments').val('@env');
+            const params = new URLSearchParams(window.location.search)
+            for (const param of params) {
+                id = param[1].trim();
+            }
+            if (id != 0) {
+                $('.head').text("@OrderResx.EditProcess");
+                ViewProcessDetails(id);
+            }
+            else {
+                $('.head').text("@OrderResx.CreateProcess");
+            }
+            hideLoadingSpinner();
+            $('#status').val(1);
+        });
+        $('#reset-button').on('click', function () {
+            window.location.reload();
+        });
+        var config = {
+            '.chosen-select-width': { width: "75%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        function ViewProcessDetails(id) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/Processor/GetProcessRecord?Id=' + parseInt(id),
+                data: '{}',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    if (response != null) {
+                        id = response.data[0].processid;
+                        $('#Txt_Name').val(response.data[0].name.trim());
+                        $('#Txt_Description').val(response.data[0].description);
+                        $('#Txt_Command').val(response.data[0].command);
+                        $('#status').val(response.data[0].status);
+                    }
+                }
+            });
+            return false;
+        }
+        function validate_form () {
+            toastr.clear();
+            valid = true;
+            if ($('#Txt_Name').val() == "") {
+                toastr.success("@OrderResx.EnterName","");
+                $('#Txt_Name').focus();
+                valid = false;
+                return false;
+            }
+            if ($('#Txt_Command').val() == "") {
+                toastr.success("@OrderResx.EnterCommand", "");
+                $('#Txt_Command').focus();
+                valid = false;
+                return false;
+            }
+            SaveProcess();
+        }
+        function SaveProcess() {
+            toastr.clear();
+            var username = '@Context.Session.GetString("FirstName")' + ' ' + '@Context.Session.GetString("LastName")';
+            var currentdate = new Date();
+            var datetime = currentdate.getFullYear() + "-"
+                + (currentdate.getMonth() + 1) + "-"
+                + currentdate.getDate() + " "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds() + "."
+                + currentdate.getMilliseconds();
+            var model = [];
+            var data = {};
+            data.processid = id.toString();
+            data.name =$.trim($('#Txt_Name').val());
+            data.description = $.trim($('#Txt_Description').val());
+            data.command = $.trim($('#Txt_Command').val());
+            data.status = $.trim($('#status').val());
+            data.createdby = username;
+            data.createddate=datetime;
+            model.push(data);
+            var process = JSON.stringify(model);
+            $.ajax({
+                type: 'POST',
+                url: '/api/Processor/SaveProcess',
+                data: process,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0].result == "@OrderResx.Success") {
+                        window.location = "/Processor/Process";
+                    }
+                    else if (response[0].result == "@OrderResx.AlreadyExisting") {
+                        hideLoadingSpinner();
+                        toastr.warning("@OrderResx.AlreadyExistingProcessName", "");
+                        return false;
+                    }
+                    else {
+                        hideLoadingSpinner();
+                        toastr.warning("@OrderResx.Somethingwentwrong","");
+                        return false;
+                    }
+                },
+                error: function (response) {
+                    toastr.warning("@OrderResx.erroroccured", "");
+                }
+            });
+            return false;
+        }
+        function BtnBack_Click() {
+            window.location = "/Processor/Process";
+        }
+    </script>
+}

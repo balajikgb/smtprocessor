@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<UserSecretsId>d02bf227-f510-4c3a-bce8-b90bf7b13b0f</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Models\ShipppingAlertSetting\**" />
+		<Compile Remove="Views\DocumentsPage\**" />
+		<Content Remove="Models\ShipppingAlertSetting\**" />
+		<Content Remove="Views\DocumentsPage\**" />
+		<EmbeddedResource Remove="Models\ShipppingAlertSetting\**" />
+		<EmbeddedResource Remove="Views\DocumentsPage\**" />
+		<None Remove="Models\ShipppingAlertSetting\**" />
+		<None Remove="Views\DocumentsPage\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="ModelMappers\IPriceUpdateMapper.cs" />
+	  <Compile Remove="ModelMappers\PriceUpdateMapper.cs" />
+	  <Compile Remove="Repositories\IPriceUpdateRepository.cs" />
+	  <Compile Remove="Repositories\PriceUpdateRepository.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Views\Processor\PriceUpdateMatrixGraph.cshtml" />
+	  <Content Remove="Views\Processor\PriceUpdateToolGraph.cshtml" />
+	  <Content Remove="Views\Processor\ProductLineMatrixGraph.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0" />
+		<PackageReference Include="ClosedXML" Version="0.100.3" />
+		<PackageReference Include="HtmlTextWriter" Version="2.1.1" />
+		<PackageReference Include="iTextSharp" Version="5.5.13.3" />
+		<PackageReference Include="MailKit" Version="3.4.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.21.1" />
+		<PackageReference Include="Microsoft.Identity.Web.UI" Version="1.21.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+		<PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\PriceUpdateRepository\ProcessorRepository.csproj" />
+		<ProjectReference Include="..\Core\Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Resources\MyInformation.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>MyInformation.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\OrderSummary.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OrderSummary.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\OrderResx.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OrderResx.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\UsersResx.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>UsersResx.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\MyInformation.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>MyInformation.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\UsersResx.resx">
+			<LastGenOutput>UsersResx.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\OrderResx.resx">
+			<LastGenOutput>OrderResx.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\OrderSummary.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>OrderSummary.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="ModelMappers\" />
+		<Folder Include="Properties\ServiceDependencies\" />
+		<Folder Include="temp\" />
+	</ItemGroup>
+
+</Project>

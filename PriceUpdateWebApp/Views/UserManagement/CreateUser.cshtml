@@ -1,0 +1,189 @@
+﻿@model ArasPLMWebAp.Models.CreateUserViewModel
+
+@using Core.Services
+@using Core.Enums
+@using ProcessorWebApp.Resources
+@{
+    var env = ViewContext.RouteData.Values[ArasPLMWebAp.Constants.Constants.environmentStr];
+}
+
+<div class="user-reg">
+    <div><h4 class="head">@OrderResx.CreateUser</h4></div>
+     <form asp-action="CreateUser" class="personal-page-form ng-invalid ng-dirty ng-touched" onsubmit="return validate_form()">
+        @Html.AntiForgeryToken()
+        <div class="d-flex form-group align-items-center m-2">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+        @if (AppAuthenticationHelper.IsJWTSignInProvider(Context.User))
+        {
+            <div class="d-flex align-items-center m-2">
+                <label class="control-label">@OrderResx.Overrideusername</label>
+                <label class="oot-form-switch">
+                    <input type="checkbox" id="unable-username" class="oot-switch-input">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        }
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control", @autocomplete="off" } })
+        </div>
+        @if (AppAuthenticationHelper.IsJWTSignInProvider(Context.User))
+        {
+            <div class="d-flex align-items-center m-2">
+                <label class="control-label">@OrderResx.Overrideusername</label>
+                <label class="oot-form-switch">
+                    <input type="checkbox" id="unable-username" class="oot-switch-input">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        }
+        @if (Context.IsInCustomRole(Core.Enums.UserRoles.Admin))
+        {
+            <div class="d-flex align-items-center m-2">
+                @Html.LabelFor(model => model.UserRole, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.UserRole, Html.GetEnumSelectList(typeof(Core.Enums.UserRoles)).Prepend(new SelectListItem { Text = OrderResx.Selectlabel, Disabled = true, Selected = true }),
+                 new
+                 {
+                     @class = "form-control"
+                 })
+            </div>
+        }
+        <div class="d-flex align-items-center m-2">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Comment, new { @class = "my-coment form-control",@autocomplete="off" })
+        </div>
+        <div class ="d-flex align-items-center m-2">
+             @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label" })
+             @Html.DropDownListFor(m => m.Language, Html.GetEnumSelectList(typeof(Core.Enums.Language)).Prepend(new SelectListItem { Text = OrderResx.Selectlabel, Disabled = true, Selected = true }),
+                 new
+                 {
+                     @class = "form-control"
+                 })
+        </div>
+        <div class="col-md-2 align-items-center m-2" style="display:none">
+            @Html.LabelFor(model => model.GenericID, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.GenericID, new { htmlAttributes = new { @class = "form-control",@autocomplete="off" } })
+        </div>
+
+        <div id="non-admin-content" class="@((Model.UserRole != Core.Enums.UserRoles.Admin && Context.IsInCustomRole(Core.Enums.UserRoles.Admin)) ? "" : "d-none")">         
+        </div>
+              
+        <br><br>
+
+        <div class="d-flex justify-content-center">
+            <button class="oot-button m-4" id="reset-button" type="button">@OrderResx.Refresh</button>
+            <button class="oot-button m-4" type="submit">@OrderResx.Save</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script>
+        var userslist="";
+        $(function () {
+            document.getElementById('FirstName').focus();
+            var selectobject = document.getElementById("UserRole");
+            for (var i=0; i<selectobject.length; i++) {
+              if (selectobject.options[i].value == '0') {
+                 selectobject.remove(i);
+              }
+            }
+            hideLoadingSpinner();  
+            $('#environments').val('@env');
+            GetUsers();
+        });
+        $('#reset-button').on('click', function () {
+            window.location.reload();
+        });
+        var config = {
+            '.chosen-select-width': { width: "75%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        function GetUsers() {
+            $.ajax({
+                type: "GET",
+                url: "/api/UsersManagement/GetUsers",
+                contentType: "application/json;charset=utf-8",
+                data: {},
+                contentType: "json",
+                async: false,
+                success: function (response) {
+                    userslist=response;
+                }
+            });
+        }
+        function validate_form() {
+            toastr.clear();
+            valid = true;
+            if (document.getElementById('FirstName').value == "") {
+                //alert ("@OrderResx.EnterFirstName");
+                toastr.warning("@OrderResx.EnterFirstName","");
+                document.getElementById('FirstName').focus();
+                valid = false;
+                return false;
+            }
+            else {
+                if (document.getElementById('LastName').value == "") {
+                    //alert ("@OrderResx.EnterLastName");
+                    toastr.warning("@OrderResx.EnterLastName", "");
+                    document.getElementById('LastName').focus();
+                    valid = false;
+                    return false;
+                }
+                else {
+                     if (document.getElementById('UserEmail').value == "") {
+                        //alert("@OrderResx.EnterUserEmail");
+                        toastr.warning("@OrderResx.EnterUserEmail", "");
+                        document.getElementById('UserEmail').focus();
+                        valid = false;
+                        return false;
+                    }
+                    else {
+                         if (document.getElementById('UserRole').value == "" || document.getElementById('UserRole').value == "@OrderResx.Selectlabel") {
+                            //alert ("@OrderResx.EnterUserRole" );
+                            toastr.warning("@OrderResx.EnterUserRole", "");
+                            document.getElementById('UserRole').focus();
+                            valid = false;
+                            return false;
+                        }
+                        else {
+                            if (document.getElementById('Language').value == "" || document.getElementById('Language').value == "@OrderResx.Selectlabel") {
+                             //alert ("@OrderResx.EnterUserLanguage" );
+                             toastr.warning("@OrderResx.EnterUserLanguage", "");
+                             document.getElementById('Language').focus();
+                             valid = false;
+                             return false;
+                           }                        
+                           else {
+                                var alreadyusernamecheck=false;
+                                $.each(userslist, function (key, value) {
+                                    if ($('#UserEmail').val() == value.email) {
+                                        alreadyusernamecheck=true;
+                                    }
+                                });
+                                if (alreadyusernamecheck==true) {
+                                    //alert("@OrderResx.AlreadyUserNameFound");
+                                    toastr.warning("@OrderResx.AlreadyUserNameFound", "");
+                                    valid = false;
+                                    return false;
+                                }
+                          }
+                       }
+                    }
+                }
+            } 
+            return valid;
+        }
+      
+    </script>
+}
